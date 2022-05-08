@@ -1,8 +1,13 @@
 # IAV22-Meitin-Moreno
 Proyecto Final IA 2022
 
-## IDEA SECUNDARIA:
-Me gustaria hacer una bandada de pájaros que se muevan por un entorno evitando obstáculos. Todos los pájaros siguen al pájaro dominante. El juagdor puede disparar a los pajaros. En este caso los que estén alrededor se asustan y salen despavoridos. Al cabo de unos segundos vuleven a reagruparse. 
+## IDEA PRINCIPAL:
+Quiero hacer una bandada de pajaros que se mueve de manera aleatoria evitando obstaculos.
+
+1) pajaro jefe que se mueve aleatoriamente por el entorno evitando obstaculos
+2) el resto de los pajaros le siguen pero con un poco de aleatoreidad (no van todos en linea india)
+3) el player puede disparar a los pajaros. si acierta este muere y mejora su puntuacion.
+4) los pajaros en cierto rango se asustan y abandonan la formacion. al cabo de un rato se reagrupan
 
 ## IDEA ORIGINAL:
 Como proyecto final voy a hacer una IA que aprenda a recorrer un circuito sin chocarse con las paredes a base de prueba y error utilizando raycast. La IA enviará varios objetos por el circuito, y en el caso de que colisionen recibirá un feedback negativo. Cuanto más lejos consigan llegar el feedback será mejor, por lo que los nuevos objetos que envie serán condicionados por dichos resultados.
