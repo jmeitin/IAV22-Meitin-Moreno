@@ -12,18 +12,7 @@ Quiero hacer una bandada de pajaros que se mueve de manera aleatoria evitando ob
 ## Descripción:
 La 
 
-## Punto de Partida: 
-### Clases:
-#### Player:
-Controla el movimiento del jugador y dispara.
-
-#### Bullet:
-Mueve el GameObject asociado en la dirección en la que miraba la cámara en ese instante. Si choca con un pájaro lo mata y aumenta la puntuación.
-
-#### GameManager:
-Se encarga de gestionar la puntuación, la escena, y el número de pájaros.
-
-## Personajes:
+## Entidades:
 ### Cazador:
 El cazador es controlado por el jugador, el cual puede realizar unicamente 2 acciones:
 * **Movimiento:** El jugador puede mover libremente a Teseo por el escenario mediante el teclado.
@@ -33,19 +22,84 @@ El cazador es controlado por el jugador, el cual puede realizar unicamente 2 acc
 El comportamiento del Pajaro Jefe viene definido por 3 algoritmos.
 * **Merodear:** El Minotauro se mueve de manera aleatoria por el escenario.
 
+## Scripts:
+### Player:
+*Para hacer el movimento de la cámara en primera persona he seguido un pequeño tutorial de youtube, reciclando lo que me podía ser útil.*
+
+El juego tiene asociado un package de Input System (Version 1.0.2 - January 21, 2021) del Registro de Unity. Aunque el juego se podría desarrollar utilizando el Input que viene incorporado en Unity por defecto, este paquete facilita mucho trabajo y proporciona muchos soportes que facilitarían escalar el proyecto en un futuro.
+
+El principal uso que se le da a este paquete en este proyecto es la de utilizar un **InputActions** llamado **PlayerInput** para gestionar las acciones que puede realizar el jugador, y a que teclas/ratón están asociados. 
+
+![image](https://user-images.githubusercontent.com/62613312/167615459-9c44360d-e5bd-4a9e-bd6d-66598a95a755.png)
+
+Una vez definidas las asociaciones entre input y acciones se genera un Script C# llamado también **PlayerInput** que puede ser consultado por otros Scripts con el fin de determinar que tecla se ha pulsado en ese frame.
+
+El Player tiene asociado un componente **CharacterController** con el fin modificar su movimiento mediante los siguientes scripts:
+
+#### Player Motor:
+Se encarga de modificar el componente **CharacterController** del player en función de los valores de las teclas WASD proporcionados por el InputManager (PlayerInput).
+```js
+speed: value, with default value of 5
+
+function ProcessMove(Vector2 WASD):
+
+   characterController.Move(transform->dir(WASD) * speed * deltaTime)
+```
+
+#### Player Look:
+Se encarga de modificar la rotación de la **Main Camera**, la cual es hija de Player, y la del transform del propio Player, en función del input del ratón proporcionados por el InputManager (PlayerInput).
+```js
+camara: Camera 
+xRotation: value, with default value of 0
+sensitivity: value, with default value of 0
+
+function ProcessLook(Vector2 mouse):
+
+   # Calcular la rotación
+   xRotation -= mouse.y * deltaTime * sensitivity
+   # Aplicar la rotación a la camara
+   camara->transform->localRotation = Eulriano(xRotation,0,0)
+   # Rotar player
+   transform.Rotate(Vector3.up * mouseX * deltaTime * sensitivity
+```
+
+#### PlayerShooter
+Se encarga de instanciar una bala en la dirección en la que mira la cámara en ese instante.
+
+#### Input Manager:
+Se encarga de generar una instancia del **PlayerInput** para poder enviarle al PlayerMotor y PlayerLook los valores del teclado y ratón en los Update. 
+```js
+speed: value, with default value of 5
+
+function FixedUpdate():
+    playerMotor.ProcessMove(andando.Movimiento)
+    playerShooter.ProcessShoot(disparar)
+    
+function LateUpdate()
+    playerLook.ProcessLook(andanado.Mirar)
+```
+
+#### Diagrama:
+
+### Balas:
+Son instanciadas por el jugador. Se mueven a velocidad constante en la dirección en la que mira la cámara a la hora de su creación. Al chocar con un pájaro avisan al GameManager. 
+
+### Pajaro Jefe:
+#### Merodear:
+
 ### Pajaro Menor:
-* **Segumineto:**
+#### Seguimiento:
 
-## Algoritmos a desarrollar:
+### GameManager:
+Se encarga de gestionar la puntuación, la escena, y el número de pájaros.
 
-### Raycast
-
-## UML:
-
+### UIManager:
+Se encarga de mostrar en pantalla el número de pájaros abatidos y los disparos usados.
 
 ## Controles:
 ### Jugador:
 * **Movimiento:** El jugador podrá controlar el movimiento del jugador mediante las flechas/teclas WASD para moverse sobre el escenario.
+* **Mirar:** El jugador puede cambiar la dirección en la que mira la cámara moviendo el ratón.
 * **Disparar:** El jugador puede disparar con la tecla espaciadora.
 
 ## Referencias:
@@ -55,10 +109,5 @@ https://github.com/PacktPublishing/Unity-2018-Artificial-Intelligence-Cookbook-S
 https://github.com/PacktPublishing/Unity-Artificial-Intelligence-Programming-FourthEdition
 * Unity Documentation:
 https://docs.unity.com/
-
-## IDEA ORIGINAL:
-Como proyecto final voy a hacer una IA que aprenda a recorrer un circuito sin chocarse con las paredes a base de prueba y error utilizando raycast. La IA enviará varios objetos por el circuito, y en el caso de que colisionen recibirá un feedback negativo. Cuanto más lejos consigan llegar el feedback será mejor, por lo que los nuevos objetos que envie serán condicionados por dichos resultados.
-
-He estado investigando y he visto ciertos plugins de Unity que podrían ser útiles y educativos. [Unity ML-Agents Toolkit](https://github.com/Unity-Technologies/ml-agents?utm_source=Unity+YouTube&utm_medium=social&utm_campaign=evangelism_global_generalpromo_2020-05-20_ml-agents-toolkit#readme)
-
-Dependiendo del alcance podría complicarlo haciendo un laberinto y haciendo que varias IAs intenten resolverlo (cada IA tendría distintos paremetros de penalización/recompensa al chocar/avanzar, pudiendo asi determinar si es más util que se penalice mucho el fracasar, o que la recompensa sea muy grande por avanzar más).
+* #1 FPS Movement: Let's Make a First Person Game in Unity!
+https://www.youtube.com/watch?v=rJqP5EesxLk&ab_channel=NattyCreations
