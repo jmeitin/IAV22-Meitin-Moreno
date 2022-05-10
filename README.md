@@ -1,16 +1,8 @@
-# Documentación Proyecto Final IA
+# Documentación Scared Bird - Proyecto Final IA
 *Javier Meitín Moreno*
 
-## IDEA PRINCIPAL:
-Quiero hacer una bandada de pajaros que se mueve de manera aleatoria evitando obstaculos.
-
-1) pajaro jefe que se mueve aleatoriamente por el entorno evitando obstaculos
-2) el resto de los pajaros le siguen pero con un poco de aleatoreidad (no van todos en linea india)
-3) el player puede disparar a los pajaros. si acierta este muere y mejora su puntuacion.
-4) los pajaros en cierto rango se asustan y abandonan la formacion. al cabo de un rato se reagrupan
-
 ## Descripción:
-La 
+Scared Bird es un juego shooter en primera persona para PC donde el jugador toma el rol de un Cazador que debe acabar con todos los pájaros en el bosque. Estos pájaros vuelan en bandada siguiendo al Pájaro Jefe. Cuando oyen un disparo, los pájaros menores huyen del lugar, hasta haberse tranquilizado al cabo de unos segundos. Al pasar cierto intervalo de tiempo vuelven a seguir al pájaro jefe como hacían antes. En caso de que el cazador mate al Pájaro jefe, la bandada se desintegrará y todos los pájaros pasarán a volar de manera aleatoria. El juego acabará cuando el Cazador haya acabado con todos los pájaros.
 
 ## Entidades:
 ### Cazador:
@@ -32,7 +24,7 @@ El principal uso que se le da a este paquete en este proyecto es la de utilizar 
 
 ![image](https://user-images.githubusercontent.com/62613312/167615459-9c44360d-e5bd-4a9e-bd6d-66598a95a755.png)
 
-Una vez definidas las asociaciones entre input y acciones se genera un Script C# llamado también **PlayerInput** que puede ser consultado por otros Scripts con el fin de determinar que tecla se ha pulsado en ese frame.
+Una vez definidas las asociaciones entre input y acciones se genera un Script C# también llamado **PlayerInput** que puede ser consultado por otros Scripts con el fin de determinar que tecla se ha pulsado en ese frame.
 
 El Player tiene asociado un componente **CharacterController** con el fin modificar su movimiento mediante los siguientes scripts:
 
@@ -80,6 +72,7 @@ function LateUpdate()
 ```
 
 #### Diagrama:
+![Untitled Diagram drawio (1)](https://user-images.githubusercontent.com/62613312/167623958-ac518a80-2c44-4ccd-a47f-d1d91e2fbabb.png)
 
 ### Balas:
 Son instanciadas por el jugador. Se mueven a velocidad constante en la dirección en la que mira la cámara a la hora de su creación. Al chocar con un pájaro avisan al GameManager. 
