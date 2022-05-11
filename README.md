@@ -82,13 +82,13 @@ Una entidad invisible que sirve como destino del NavMeshAgent del pájaro jefe. 
 # Las dimensiones del area sobre la que puede volar el pájaro.
 dimensiones: float, with default value of 30
 
-    public void SetRandomPosition()
+    function SetRandomPosition()
         x = Random.Range(-dimensiones, dimensiones)
         y = position.y
         z = Random.Range(-dimensiones, dimensiones)
         transform.SetPosition(x, y, z)
 
-    private void OnTriggerStay(Collider other)
+     function OnTriggerStay(Collider other)
         if other == Tree then
             SetRandomPosition()
 ```
