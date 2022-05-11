@@ -56,7 +56,7 @@ function ProcessLook(Vector2 mouse):
 ```
 
 #### PlayerShooter
-Se encarga de instanciar una bala en la dirección en la que mira la cámara en ese instante.
+Se encarga de disparar una bala en la dirección en la que mira la cámara en ese instante. Dichas balas no son entidades físicas. Unicamente se proyecta un raycast desde la posición de player, y en caso de chocar con un pájaro, avisa al GameManager.
 
 #### Input Manager:
 Se encarga de generar una instancia del **PlayerInput** para poder enviarle al PlayerMotor y PlayerLook los valores del teclado y ratón en los Update. 
@@ -74,14 +74,23 @@ function LateUpdate()
 #### Diagrama:
 ![Untitled Diagram drawio (1)](https://user-images.githubusercontent.com/62613312/167623958-ac518a80-2c44-4ccd-a47f-d1d91e2fbabb.png)
 
-### Balas:
-Son instanciadas por el jugador. Se mueven a velocidad constante en la dirección en la que mira la cámara a la hora de su creación. Al chocar con un pájaro avisan al GameManager. 
-
 ### Pajaro Jefe:
 #### Merodear:
+Merodea mediante un NavMeshAgent. Hay un objeto vacío en la escena que funciona a modo de target. El pájaro se mueve hasta él evitando los obstáculos en el camnio, y una vez lo alcanza, el target se teletransporta a una nueva posición aletaroria en el mapa. De esta manera vuelve a comenzar el vuelo del pájaro jefe.
+```js
+target: Transform
+navMeshAgent: NavMeshAgent
+
+function Update():
+    navMeshAgent.destination = target.position
+    # El pajaro alcanzo su objetivo
+    if transform.position equals target.position then
+         target.position = Random Position     
+```
 
 ### Pajaro Menor:
 #### Seguimiento:
+El seguimiento funciona al igual que el Merodeo salvo que el target es el pájaro jefe.
 
 ### GameManager:
 Se encarga de gestionar la puntuación, la escena, y el número de pájaros.
@@ -94,6 +103,12 @@ Se encarga de mostrar en pantalla el número de pájaros abatidos y los disparos
 * **Movimiento:** El jugador podrá controlar el movimiento del jugador mediante las flechas/teclas WASD para moverse sobre el escenario.
 * **Mirar:** El jugador puede cambiar la dirección en la que mira la cámara moviendo el ratón.
 * **Disparar:** El jugador puede disparar con la tecla espaciadora.
+
+## Assets:
+Todos los assets usados son gratuitos. O bien los he creado yo, o los he cogido de internet:
+* **Árbol:** https://free3d.com/es/modelo-3d/tree-74556.html
+* **Árboles:** https://free3d.com/es/modelo-3d/trees-9-53338.html
+* **Skybox:** https://assetstore.unity.com/packages/2d/textures-materials/sky/free-hdr-skyboxes-pack-175525
 
 ## Referencias:
 * Unity 2018 Artificial Intelligence Cookbook, Second Edition (Repositorio)
