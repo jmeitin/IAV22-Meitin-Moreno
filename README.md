@@ -74,6 +74,25 @@ function LateUpdate()
 #### Diagrama:
 ![Untitled Diagram drawio (1)](https://user-images.githubusercontent.com/62613312/167623958-ac518a80-2c44-4ccd-a47f-d1d91e2fbabb.png)
 
+### Target:
+Una entidad invisible que sirve como destino del NavMeshAgent del pájaro jefe. Tiene un método para cambiar a una nueva posición aleatoria dentro de las dimensiones del área de vuelo. Si choca con un árbol cambia a una nueva posición. 
+
+#### RandomMoveTarget:
+```js
+# Las dimensiones del area sobre la que puede volar el pájaro.
+dimensiones: float, with default value of 30
+
+    public void SetRandomPosition()
+        x = Random.Range(-dimensiones, dimensiones)
+        y = position.y
+        z = Random.Range(-dimensiones, dimensiones)
+        transform.SetPosition(x, y, z)
+
+    private void OnTriggerStay(Collider other)
+        if other == Tree then
+            SetRandomPosition()
+```
+
 ### Pajaro Jefe:
 #### Merodear:
 Merodea mediante un NavMeshAgent. Hay un objeto vacío en la escena que funciona a modo de target. El pájaro se mueve hasta él evitando los obstáculos en el camnio, y una vez lo alcanza, el target se teletransporta a una nueva posición aletaroria en el mapa. De esta manera vuelve a comenzar el vuelo del pájaro jefe.
@@ -83,9 +102,11 @@ navMeshAgent: NavMeshAgent
 
 function Update():
     navMeshAgent.destination = target.position
-    # El pajaro alcanzo su objetivo
-    if transform.position equals target.position then
-         target.position = Random Position     
+    
+function OnTriggerEnter(Collider other)
+        # El pajaro alcanzo su objetivo
+        if other == Target then
+            target.randomMoveTarget.SetRandomPosition();
 ```
 
 ### Pajaro Menor:
