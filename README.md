@@ -108,6 +108,7 @@ Se encarga de mostrar en pantalla el número de pájaros abatidos y los disparos
 Todos los assets usados son gratuitos. O bien los he creado yo, o los he cogido de internet:
 * **Árbol:** https://free3d.com/es/modelo-3d/tree-74556.html
 * **Árboles:** https://free3d.com/es/modelo-3d/trees-9-53338.html
+* **Pájaro:** https://free3d.com/es/modelo-3d/gull-17126.html
 * **Skybox:** https://assetstore.unity.com/packages/2d/textures-materials/sky/free-hdr-skyboxes-pack-175525
 
 ## Referencias:
