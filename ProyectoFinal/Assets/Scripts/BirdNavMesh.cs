@@ -13,7 +13,7 @@ public class BirdNavMesh : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         if (navMeshAgent == null)
-            Debug.Log("BirdNavMesh no encuentra NavMeshAgent asociado a Player.");
+            Debug.Log("BirdNavMesh no encuentra NavMeshAgent asociado a Pajaro Jefe.");
     }
 
     private void Update()
