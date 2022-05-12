@@ -140,6 +140,7 @@ function BirdDied(int destructionPoints):
 
 ### UIManager:
 Se encarga de mostrar en pantalla el número de pájaros abatidos y los disparos usados.
+
 ![image](https://user-images.githubusercontent.com/62613312/168070359-efb42d1a-a4f7-487b-a4b9-90b47d9130a1.png)
 
 ## Controles:
@@ -151,7 +152,7 @@ Se encarga de mostrar en pantalla el número de pájaros abatidos y los disparos
 ## Assets:
 Todos los assets usados son gratuitos. O bien los he creado yo, o los he cogido de internet:
 * **Árbol:** https://free3d.com/es/modelo-3d/tree-74556.html
-* **Árboles:** https://free3d.com/es/modelo-3d/trees-9-53338.html
+* **Material de arena:** https://assetstore.unity.com/packages/2d/textures-materials/floors/yughues-free-sand-materials-12964
 * **Pájaro:** https://free3d.com/es/modelo-3d/gull-17126.html
 * **Skybox:** https://assetstore.unity.com/packages/2d/textures-materials/sky/free-hdr-skyboxes-pack-175525
 
