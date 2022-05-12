@@ -7,12 +7,17 @@ Scared Bird es un juego shooter en primera persona para PC donde el jugador toma
 ## Entidades:
 ### Cazador:
 El cazador es controlado por el jugador, el cual puede realizar unicamente 2 acciones:
-* **Movimiento:** El jugador puede mover libremente a Teseo por el escenario mediante el teclado.
-* **Disparar:** El jugador puede activar el hilo de Ariadna a voluntad propia. En dicho caso, Teseo seguirá el recorrido que describe hasta llegar a la salida
+* **Movimiento:** El jugador puede mover libremente al cazador por el escenario mediante el teclado.
+* **Disparar:** El jugador puede disparar mediante la tecla espaciadora.
 
 ### Pajaro Jefe:
-El comportamiento del Pajaro Jefe viene definido por 3 algoritmos.
-* **Merodear:** El Minotauro se mueve de manera aleatoria por el escenario.
+El comportamiento del Pajaro Jefe viene definido por 1 algoritmo.
+* **Merodear:** No es estrictamente un merodeo como el utilizado en las prácticas anteriores, si no un seguimiento a un target invisible que va cambiando a una nueva posición aletaoria cada vez que el pájaro le alcanza.
+
+### Pájaro Menor:
+* **Seguimiento:** Sigue al Pájaro jefe.
+* **Huida:** Si oye un disparo oye en dirección contraria por unos segundos.
+* **Merodeo:** En caso de que muera el Pájaro jefe, los pájaros menores pasan a merodear.
 
 ## Scripts:
 ### Player:
@@ -113,11 +118,29 @@ function OnTriggerEnter(Collider other)
 #### Seguimiento:
 El seguimiento funciona al igual que el Merodeo salvo que el target es el pájaro jefe.
 
+#### Huida:
+En caso de que se produzca un disparo, los pájaros en proximidad huyen en dirección contraria.
+
 ### GameManager:
 Se encarga de gestionar la puntuación, la escena, y el número de pájaros.
 
+```js
+# Variables que llevan la cuenta de los datos de la partida
+deadBirds : value, default value 0;
+aliveBirds : value, default value Number of birds in the scene;
+score : value, default value 0;
+shots : value, default value 0;;
+
+function BirdDied(int destructionPoints):
+    aliveBirds--
+    deadBirds++
+    score += destructionPoints
+    update UI
+```
+
 ### UIManager:
 Se encarga de mostrar en pantalla el número de pájaros abatidos y los disparos usados.
+![image](https://user-images.githubusercontent.com/62613312/168070359-efb42d1a-a4f7-487b-a4b9-90b47d9130a1.png)
 
 ## Controles:
 ### Jugador:
