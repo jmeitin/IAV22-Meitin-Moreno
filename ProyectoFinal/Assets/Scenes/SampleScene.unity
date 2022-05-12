@@ -236,7 +236,7 @@ Transform:
   m_LocalScale: {x: 1, y: 2.6375, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &57285502
 MonoBehaviour:
@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 92738652}
   - component: {fileID: 92738651}
   - component: {fileID: 92738650}
+  - component: {fileID: 92738656}
   m_Layer: 8
   m_Name: PajaroMenor (1)
   m_TagString: Untagged
@@ -417,11 +418,66 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92738648}
   m_Mesh: {fileID: -4468202060001004782, guid: 6e4f2d701c0d11e4e823f7bb4db47361, type: 3}
+--- !u!114 &92738656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92738648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &96007014 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 6244548910323157827, guid: e91dc1c67fbf4cd46b04e53cc37cdb93, type: 3}
   m_PrefabInstance: {fileID: 3069275477945595217}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &105527586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 105527588}
+  - component: {fileID: 105527587}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &105527587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105527586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4262039aada8824e86ffe06f19f28cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &105527588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105527586}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &171612020
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +493,7 @@ GameObject:
   - component: {fileID: 171612024}
   - component: {fileID: 171612023}
   - component: {fileID: 171612022}
+  - component: {fileID: 171612028}
   m_Layer: 8
   m_Name: PajaroMenor (2)
   m_TagString: Untagged
@@ -572,6 +629,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171612020}
   m_Mesh: {fileID: -4468202060001004782, guid: 6e4f2d701c0d11e4e823f7bb4db47361, type: 3}
+--- !u!114 &171612028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171612020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &395368957 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 82203128d62070042a2a627939382b27, type: 3}
@@ -726,6 +795,7 @@ GameObject:
   - component: {fileID: 598736702}
   - component: {fileID: 598736701}
   - component: {fileID: 598736700}
+  - component: {fileID: 598736706}
   m_Layer: 8
   m_Name: PajaroMenor (5)
   m_TagString: Untagged
@@ -861,6 +931,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598736698}
   m_Mesh: {fileID: -4468202060001004782, guid: 6e4f2d701c0d11e4e823f7bb4db47361, type: 3}
+--- !u!114 &598736706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598736698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &670774508
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,6 +958,7 @@ GameObject:
   - component: {fileID: 670774512}
   - component: {fileID: 670774511}
   - component: {fileID: 670774510}
+  - component: {fileID: 670774516}
   m_Layer: 8
   m_Name: PajaroMenor (4)
   m_TagString: Untagged
@@ -1011,6 +1094,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670774508}
   m_Mesh: {fileID: -4468202060001004782, guid: 6e4f2d701c0d11e4e823f7bb4db47361, type: 3}
+--- !u!114 &670774516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670774508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &680060703 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 82203128d62070042a2a627939382b27, type: 3}
@@ -1137,6 +1232,7 @@ GameObject:
   - component: {fileID: 709190706}
   - component: {fileID: 709190705}
   - component: {fileID: 709190704}
+  - component: {fileID: 709190710}
   m_Layer: 8
   m_Name: PajaroMenor
   m_TagString: Untagged
@@ -1272,6 +1368,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709190702}
   m_Mesh: {fileID: -4468202060001004782, guid: 6e4f2d701c0d11e4e823f7bb4db47361, type: 3}
+--- !u!114 &709190710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709190702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &753598344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,6 +1395,7 @@ GameObject:
   - component: {fileID: 753598348}
   - component: {fileID: 753598347}
   - component: {fileID: 753598346}
+  - component: {fileID: 753598352}
   m_Layer: 8
   m_Name: PajaroMenor (3)
   m_TagString: Untagged
@@ -1422,6 +1531,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753598344}
   m_Mesh: {fileID: -4468202060001004782, guid: 6e4f2d701c0d11e4e823f7bb4db47361, type: 3}
+--- !u!114 &753598352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753598344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &920764294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1551,7 +1672,7 @@ Transform:
   - {fileID: 976307955}
   - {fileID: 1499848998}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &960693528 stripped
 GameObject:
@@ -2309,7 +2430,7 @@ Transform:
   - {fileID: 598736699}
   - {fileID: 2114337434}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1868584751 stripped
 GameObject:
@@ -2535,6 +2656,7 @@ GameObject:
   - component: {fileID: 2114337437}
   - component: {fileID: 2114337436}
   - component: {fileID: 2114337435}
+  - component: {fileID: 2114337441}
   m_Layer: 8
   m_Name: PajaroMenor (6)
   m_TagString: Untagged
@@ -2670,6 +2792,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114337433}
   m_Mesh: {fileID: -4468202060001004782, guid: 6e4f2d701c0d11e4e823f7bb4db47361, type: 3}
+--- !u!114 &2114337441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114337433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2130662402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2825,7 +2959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6259868581464912037, guid: e91dc1c67fbf4cd46b04e53cc37cdb93, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6259868581464912037, guid: e91dc1c67fbf4cd46b04e53cc37cdb93, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2924,8 +3058,9 @@ GameObject:
   - component: {fileID: 6203783546164894526}
   - component: {fileID: 7743772105097254614}
   - component: {fileID: 7743772105097254613}
-  - component: {fileID: 7743772105097254612}
   - component: {fileID: 7743772105097254615}
+  - component: {fileID: 7743772105097254612}
+  - component: {fileID: 7743772105097254616}
   m_Layer: 3
   m_Name: PajaroJefe
   m_TagString: Untagged
@@ -2997,3 +3132,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7743772105097254616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7743772105097254611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
