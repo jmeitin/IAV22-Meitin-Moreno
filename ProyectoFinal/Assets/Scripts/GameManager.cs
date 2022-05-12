@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour
     private int deadBirds = 0;
     private int aliveBirds = 0;
     private int score = 0;
-   // private UIManager theUIManager;
+    private int shots = 0;
+    private UIManager uiManager;
+    bool ramon = true;
 
     void Awake() {
         if (instance == null) {
@@ -22,19 +24,30 @@ public class GameManager : MonoBehaviour
         else Destroy(this.gameObject);
     }
 
-    //public void SetUIManager(UIManager uim)
-    //{
-    //    theUIManager = uim;
-    //    uim.Init(lives, enemiesInLevel, 0);
-    //}
+
+    public void SetUIManager(UIManager uim)
+    {
+        uiManager = uim;
+        //uim.Init(score, deadBirds, aliveBirds);
+    }
+    private void Update()
+    {
+        if (ramon == true)
+        {
+            uiManager.Init(score, deadBirds, aliveBirds);
+        }
+    }
 
     public void BirdDied(int destructionPoints)
     {
         aliveBirds--;
         deadBirds++;
         Debug.Log("Birds Remaining = " + aliveBirds);
-        //if (theUIManager != null) theUIManager.RemoveEnemy(levelScore);
         score += destructionPoints;
+        if (uiManager != null)
+        {
+            uiManager.RemoveBird(deadBirds, aliveBirds, score, shots);
+        }
     }
 
     public void ChangeScene(string sceneName)
