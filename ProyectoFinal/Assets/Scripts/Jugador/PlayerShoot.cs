@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    private Camera camara;
+    public LayerMask layerMask;
     private float distance = 50f;
-    public LayerMask layerMask; 
+    private Camera camara;
+    private AudioSource audio;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +16,10 @@ public class PlayerShoot : MonoBehaviour
         camara = GetComponent<PlayerLook>().camara;
         if (camara == null)
             Debug.Log("PlayerShoot no encuentra PlayerLook asociado a Player o la Main Camara.");
+
+        audio = GetComponent<AudioSource>();
+        if (audio == null)
+            Debug.Log("PlayerShoot no encuentra AudioSource asociado a Player.");
     }
 
     // Update is called once per frame
@@ -21,7 +27,8 @@ public class PlayerShoot : MonoBehaviour
 
     public void Shoot()
     {
-        Debug.Log("Disparar");
+        GameManager.instance.AddBullet();
+        audio.Play();
 
         Ray ray = new Ray(camara.transform.position, camara.transform.forward);
 

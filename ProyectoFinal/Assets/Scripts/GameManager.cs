@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    private int stage; //Comprobar en que nivel estamos 
-    private int lives = 3;
     private int deadBirds = 0;
     private int aliveBirds = 0;
     private int score = 0;
@@ -35,6 +33,7 @@ public class GameManager : MonoBehaviour
         if (ramon == true)
         {
             uiManager.Init(score, deadBirds, aliveBirds);
+            ramon = false;
         }
     }
 
@@ -46,7 +45,7 @@ public class GameManager : MonoBehaviour
         score += destructionPoints;
         if (uiManager != null)
         {
-            uiManager.RemoveBird(deadBirds, aliveBirds, score, shots);
+            uiManager.RemoveBird(deadBirds, aliveBirds, score);
         }
     }
 
@@ -59,6 +58,12 @@ public class GameManager : MonoBehaviour
     {
         aliveBirds++;
         Debug.Log("Nuevo Bird = " + aliveBirds);
+    }
+
+    public void AddBullet()
+    {
+        shots++;
+        uiManager.AmountShots(shots);
     }
 
     private void GameOver() //menu

@@ -28,14 +28,20 @@ public class UIManager : MonoBehaviour
         enemiesLeft = aliveBirds;
     }
 
-    public void RemoveBird(int deadBirds, int aliveBirds, int score, int shots)
+    public void RemoveBird(int deadBirds, int aliveBirds, int score)
     {
-        shotsText.text = shots.ToString();
         scoreText.text = score.ToString();
         deadText.text = deadBirds.ToString();
         aliveText.text = aliveBirds.ToString();
         enemiesLeft--;
     }
 
-   
+    public void AmountShots(int shots)
+    {
+        shotsText.text = shots.ToString();
+        Debug.Log("HAHAHAHA"+ shots);
+
+    }
+
+
 }
