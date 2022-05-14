@@ -33,6 +33,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Disparar"",
+                    ""type"": ""Button"",
+                    ""id"": ""826c3994-736b-4e7d-819e-5a93b93f0fe7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -99,6 +107,17 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Mirar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""56275202-1905-4bc5-b698-fcf4ee00afa8"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Disparar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -617,6 +636,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Andando = asset.FindActionMap("Andando", throwIfNotFound: true);
         m_Andando_Movimiento = m_Andando.FindAction("Movimiento", throwIfNotFound: true);
         m_Andando_Mirar = m_Andando.FindAction("Mirar", throwIfNotFound: true);
+        m_Andando_Disparar = m_Andando.FindAction("Disparar", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -680,12 +700,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private IAndandoActions m_AndandoActionsCallbackInterface;
     private readonly InputAction m_Andando_Movimiento;
     private readonly InputAction m_Andando_Mirar;
+    private readonly InputAction m_Andando_Disparar;
     public struct AndandoActions
     {
         private @PlayerInput m_Wrapper;
         public AndandoActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movimiento => m_Wrapper.m_Andando_Movimiento;
         public InputAction @Mirar => m_Wrapper.m_Andando_Mirar;
+        public InputAction @Disparar => m_Wrapper.m_Andando_Disparar;
         public InputActionMap Get() { return m_Wrapper.m_Andando; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -701,6 +723,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Mirar.started -= m_Wrapper.m_AndandoActionsCallbackInterface.OnMirar;
                 @Mirar.performed -= m_Wrapper.m_AndandoActionsCallbackInterface.OnMirar;
                 @Mirar.canceled -= m_Wrapper.m_AndandoActionsCallbackInterface.OnMirar;
+                @Disparar.started -= m_Wrapper.m_AndandoActionsCallbackInterface.OnDisparar;
+                @Disparar.performed -= m_Wrapper.m_AndandoActionsCallbackInterface.OnDisparar;
+                @Disparar.canceled -= m_Wrapper.m_AndandoActionsCallbackInterface.OnDisparar;
             }
             m_Wrapper.m_AndandoActionsCallbackInterface = instance;
             if (instance != null)
@@ -711,6 +736,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Mirar.started += instance.OnMirar;
                 @Mirar.performed += instance.OnMirar;
                 @Mirar.canceled += instance.OnMirar;
+                @Disparar.started += instance.OnDisparar;
+                @Disparar.performed += instance.OnDisparar;
+                @Disparar.canceled += instance.OnDisparar;
             }
         }
     }
@@ -824,6 +852,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     {
         void OnMovimiento(InputAction.CallbackContext context);
         void OnMirar(InputAction.CallbackContext context);
+        void OnDisparar(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

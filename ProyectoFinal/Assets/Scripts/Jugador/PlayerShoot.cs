@@ -17,22 +17,25 @@ public class PlayerShoot : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() {  }
+
+    public void Shoot()
     {
+        Debug.Log("Disparar");
+
         Ray ray = new Ray(camara.transform.position, camara.transform.forward);
 
         Debug.DrawRay(ray.origin, ray.direction * distance);
 
         RaycastHit objetivo;
         //EL DISPARO ACERTO
-        if(Physics.Raycast(ray, out objetivo, distance, layerMask))
+        if (Physics.Raycast(ray, out objetivo, distance, layerMask))
         {
             Bird pajaro = objetivo.collider.GetComponent<Bird>();
-            if(pajaro != null && pajaro.gameObject.active)
+            if (pajaro != null && pajaro.gameObject.active)
             {
                 pajaro.KillBird();
             }
         }
-
     }
 }

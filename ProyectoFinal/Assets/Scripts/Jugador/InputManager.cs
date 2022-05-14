@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     private PlayerInput.AndandoActions andando;
     private PlayerMotor playerMotor;
     private PlayerLook playerLook;
+    private PlayerShoot playerShoot;
 
     private void Awake()
     {
@@ -27,8 +28,20 @@ public class InputManager : MonoBehaviour
         playerLook = GetComponent<PlayerLook>();
         if (playerLook == null)
             Debug.Log("InputManager no encuentra PlayerLook asociado a Player.");
+
+        //DISPARAR PLAYER
+        playerShoot = GetComponent<PlayerShoot>();
+        if (playerShoot == null)
+            Debug.Log("InputManager no encuentra PlayerShoot asociado a Player.");
     }
 
+    private void Update()
+    {
+        if (andando.Disparar.triggered)
+        {
+            playerShoot.Shoot();
+        }
+    }
     private void FixedUpdate()
     {
         playerMotor.ProcessMove(andando.Movimiento.ReadValue<Vector2>());
