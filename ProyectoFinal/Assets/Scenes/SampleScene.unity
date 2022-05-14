@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 92738651}
   - component: {fileID: 92738650}
   - component: {fileID: 92738656}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: PajaroMenor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 171612023}
   - component: {fileID: 171612022}
   - component: {fileID: 171612028}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: PajaroMenor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1277,7 +1277,7 @@ GameObject:
   - component: {fileID: 598736701}
   - component: {fileID: 598736700}
   - component: {fileID: 598736706}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: PajaroMenor (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1440,7 +1440,7 @@ GameObject:
   - component: {fileID: 670774511}
   - component: {fileID: 670774510}
   - component: {fileID: 670774516}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: PajaroMenor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1714,7 +1714,7 @@ GameObject:
   - component: {fileID: 709190705}
   - component: {fileID: 709190704}
   - component: {fileID: 709190710}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: PajaroMenor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1877,7 +1877,7 @@ GameObject:
   - component: {fileID: 753598347}
   - component: {fileID: 753598346}
   - component: {fileID: 753598352}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: PajaroMenor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2521,6 +2521,21 @@ MonoBehaviour:
   camara: {fileID: 96007014}
   xSensitivity: 30
   ySensitivity: 30
+--- !u!114 &998615915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998615907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77bc913e4fac33488d2985ab683fae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1001 &1080538231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4006,7 +4021,7 @@ GameObject:
   - component: {fileID: 2114337436}
   - component: {fileID: 2114337435}
   - component: {fileID: 2114337441}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: PajaroMenor (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4453,7 +4468,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 10
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 1
   m_AngularSpeed: 120

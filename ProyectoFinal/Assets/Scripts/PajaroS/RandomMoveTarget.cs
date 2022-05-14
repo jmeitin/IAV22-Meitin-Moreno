@@ -8,12 +8,12 @@ public class RandomMoveTarget : MonoBehaviour
 
     public void SetRandomPosition()
     {
-        Debug.Log("Random");
+        //Debug.Log("Random");
         ////deshace camino ==> vuelve al (0,y,0)
         Vector3 pos = transform.position;
         Debug.Log(pos);
         pos = -pos;
-        Debug.Log(pos);
+        //Debug.Log(pos);
         transform.Translate(pos.x, 0, pos.z);
         //nueva pos
         float x = Random.Range(-dimensiones, dimensiones);
