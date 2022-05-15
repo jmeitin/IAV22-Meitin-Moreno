@@ -6,6 +6,7 @@ using UnityEngine.AI; //NavMesh
 public class BirdNavMesh : MonoBehaviour
 {
     [SerializeField] private Transform movePositionTransform;
+    private RandomMoveTarget target;
 
     private NavMeshAgent navMeshAgent;
 
@@ -14,6 +15,16 @@ public class BirdNavMesh : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         if (navMeshAgent == null)
             Debug.Log("BirdNavMesh no encuentra NavMeshAgent asociado a Pajaro Jefe.");
+
+        target = movePositionTransform.gameObject.GetComponent<RandomMoveTarget>();
+        if (target == null)
+            Debug.Log("El movePosistionTransform del BirdNavMesh no tiene asociado RandomMoveTarget");
+    }
+
+    private void OnEnable()
+    {
+        target.enabled = true;
+        target.SetRandomPosition();
     }
 
     private void Update()
@@ -23,11 +34,9 @@ public class BirdNavMesh : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Target"))
+        if (other.gameObject == target.gameObject)
         {
             Debug.Log("Colision: Bird x Target");
-
-            RandomMoveTarget target = other.gameObject.GetComponent<RandomMoveTarget>();
             target.SetRandomPosition();
         }
     }

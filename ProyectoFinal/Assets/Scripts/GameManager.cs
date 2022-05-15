@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [SerializeField] private GameObject[] pajaros;
     private int deadBirds = 0;
     private int aliveBirds = 0;
     private int score = 0;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
         uiManager = uim;
         //uim.Init(score, deadBirds, aliveBirds);
     }
+
     private void Update()
     {
         if (ramon == true)
@@ -49,6 +51,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PajaroJefeDied(int destructionPoints)
+    {
+        //Debug.Log("JAJAJJAA");
+        BirdDied(destructionPoints);
+        for(int i = 0; i < pajaros.Length; i++)
+        {
+            GameObject bird = pajaros[i];
+            if (pajaros[i].active)
+            {
+                BirdNavMesh nav = bird.GetComponent<BirdNavMesh>();
+                PajaroSeguir seguir = bird.GetComponent<PajaroSeguir>();
+                if (nav == null || seguir == null)
+                    Debug.Log("GM encontro un pajaro sin BirdNavMesh/PajaroSeguir");
+                else
+                {
+                    //DEJA DE SEGUIR AL JEFE ==> HA MUERTO
+                    seguir.enabled = false;
+                    //EMPIEZA A MOVERSE RANDOM
+                    nav.enabled = true;
+                }
+            }
+        }
+    }
+
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
@@ -57,7 +83,7 @@ public class GameManager : MonoBehaviour
     public void AddBird()
     {
         aliveBirds++;
-        Debug.Log("Nuevo Bird = " + aliveBirds);
+       // Debug.Log("Nuevo Bird = " + aliveBirds);
     }
 
     public void AddBullet()
