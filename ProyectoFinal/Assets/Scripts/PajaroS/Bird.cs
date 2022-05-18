@@ -22,16 +22,12 @@ public class Bird : MonoBehaviour //abstract si quieres que sea un template para
 
         if (!jefe)
         {
-            GameManager.instance.BirdDied(10);
-           // Debug.Log("ADIOS PAJARO");
-            
+            GameManager.instance.NormalBirdDied(10, transform.position);
         }
         else
         {
             GameManager.instance.PajaroJefeDied(30);
-                // Debug.Log("ADIOS JEFE");
         }
         this.gameObject.SetActive(false);
-
     }
 }

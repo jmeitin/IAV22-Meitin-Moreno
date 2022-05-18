@@ -6,6 +6,7 @@ using UnityEngine.AI; //NavMesh
 public class BirdNavMesh : MonoBehaviour
 {
     [SerializeField] private Transform movePositionTransform;
+    [SerializeField] private int distanciaHuida = 10;
     private RandomMoveTarget target;
 
     private NavMeshAgent navMeshAgent;
@@ -27,9 +28,20 @@ public class BirdNavMesh : MonoBehaviour
         target.SetRandomPosition();
     }
 
+    public void Huir(Vector3 disparo)
+    {
+        //OBTENGO DIR DE HUIDA 
+        Vector3 dir = transform.position - disparo;
+        dir.Normalize();
+
+        //CALCULO NEW POS
+
+        target.SetPosition(dir * distanciaHuida);
+    }
+
     private void Update()
     {
-        navMeshAgent.destination = movePositionTransform.position;        
+        navMeshAgent.destination = movePositionTransform.position;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -22,6 +22,17 @@ public class RandomMoveTarget : MonoBehaviour
         Debug.Log("Final Pos = "+ transform.position);
     }
 
+    public void SetPosition(Vector3 newPos)
+    {
+        //DESHACE CAMINO
+        Vector3 pos = transform.position;
+        Debug.Log(pos);
+        pos = -pos;
+        transform.Translate(pos.x, 0, pos.z);
+        //nueva pos
+        transform.Translate(newPos.x, 0, newPos.z);
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Tree"))

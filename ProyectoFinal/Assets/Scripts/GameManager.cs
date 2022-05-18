@@ -15,8 +15,10 @@ public class GameManager : MonoBehaviour
     private UIManager uiManager;
     bool ramon = true;
 
-    void Awake() {
-        if (instance == null) {
+    void Awake()
+    {
+        if (instance == null)
+        {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void BirdDied(int destructionPoints)
     {
+        //INTERFAZ------------------
         aliveBirds--;
         deadBirds++;
         Debug.Log("Birds Remaining = " + aliveBirds);
@@ -51,25 +54,52 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PajaroJefeDied(int destructionPoints)
+    public void NormalBirdDied(int destructionPoints, Vector3 pos)
     {
-        //Debug.Log("JAJAJJAA");
         BirdDied(destructionPoints);
-        for(int i = 0; i < pajaros.Length; i++)
+        //COMPORTAMIENTO-------------
+        for (int i = 0; i < pajaros.Length; i++)
         {
             GameObject bird = pajaros[i];
             if (pajaros[i].active)
             {
                 BirdNavMesh nav = bird.GetComponent<BirdNavMesh>();
-                PajaroSeguir seguir = bird.GetComponent<PajaroSeguir>();
-                if (nav == null || seguir == null)
+                PajaroSeguir seguirAJefe = bird.GetComponent<PajaroSeguir>();
+                if (nav == null || seguirAJefe == null)
+                    Debug.Log("GM encontro un pajaro sin BirdNavMesh/PajaroSeguir");
+                else
+                {
+                    Debug.Log("Normallllll");
+                    // DEJA DE SEGUIR AL JEFE ==> HA MUERTO
+                    seguirAJefe.enabled = false;
+                    //EMPIEZA A MOVERSE RANDOM
+                    nav.enabled = true;
+                    nav.Huir(pos);
+                }
+            }
+        }
+    }
+
+    public void PajaroJefeDied(int destructionPoints)
+    {
+        //Debug.Log("JAJAJJAA");
+        BirdDied(destructionPoints);
+        for (int i = 0; i < pajaros.Length; i++)
+        {
+            GameObject bird = pajaros[i];
+            if (pajaros[i].active)
+            {
+                BirdNavMesh nav = bird.GetComponent<BirdNavMesh>();
+                PajaroSeguir seguirAJefe = bird.GetComponent<PajaroSeguir>();
+                if (nav == null || seguirAJefe == null)
                     Debug.Log("GM encontro un pajaro sin BirdNavMesh/PajaroSeguir");
                 else
                 {
                     //DEJA DE SEGUIR AL JEFE ==> HA MUERTO
-                    seguir.enabled = false;
+                    seguirAJefe.enabled = false;
                     //EMPIEZA A MOVERSE RANDOM
                     nav.enabled = true;
+                    //nav.Huir(pos);
                 }
             }
         }
@@ -83,7 +113,7 @@ public class GameManager : MonoBehaviour
     public void AddBird()
     {
         aliveBirds++;
-       // Debug.Log("Nuevo Bird = " + aliveBirds);
+        // Debug.Log("Nuevo Bird = " + aliveBirds);
     }
 
     public void AddBullet()
