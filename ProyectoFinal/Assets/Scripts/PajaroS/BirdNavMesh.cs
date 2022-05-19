@@ -7,6 +7,7 @@ public class BirdNavMesh : MonoBehaviour
 {
     [SerializeField] private Transform movePositionTransform;
     [SerializeField] private int distanciaHuida = 20000;
+    private bool esJefe = false;
     private RandomMoveTarget target;
 
     private NavMeshAgent navMeshAgent;
@@ -23,12 +24,15 @@ public class BirdNavMesh : MonoBehaviour
         target = movePositionTransform.gameObject.GetComponent<RandomMoveTarget>();
         if (target == null)
             Debug.Log("El movePosistionTransform del BirdNavMesh no tiene asociado RandomMoveTarget");
+
+        if (GetComponent<PajaroSeguir>() == null) 
+            esJefe = true;
     }
 
     private void OnEnable()
     {
         target.enabled = true;
-        //target.SetRandomPosition();
+        if(esJefe || jefeFallecio) target.SetRandomPosition();
     }
 
     public void Huir(Vector3 disparo, bool jefeDied)
@@ -39,14 +43,6 @@ public class BirdNavMesh : MonoBehaviour
         Vector3 newPos = dir * distanciaHuida*2 + transform.position;
         Debug.Log(newPos);
         target.SetPosition(newPos);
-        ////OBTENGO DIR DE HUIDA 
-        //Vector3 dir = transform.position - disparo;
-        //dir.Normalize();
-
-        ////CALCULO NEW POS
-        //dir = dir * distanciaHuida;
-        //Debug.Log(dir);
-        //target.SetPosition(dir);
 
         if (jefeDied) jefeFallecio = jefeDied;
         Invoke("SinMiedo", 5);
@@ -55,6 +51,14 @@ public class BirdNavMesh : MonoBehaviour
     private void SinMiedo()
     {
         Debug.Log("SinMiedo");
+        if (jefeFallecio || esJefe)
+            target.SetRandomPosition();
+   
+        else //sigue vivo el jefe
+        {
+            GetComponent<PajaroSeguir>().enabled = true;
+            this.enabled = false;
+        }
     }
 
     private void Update()
