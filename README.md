@@ -193,6 +193,9 @@ function BirdDied(int destructionPoints, Vector3 posDeadBird, bool eraJefe):
          BirdNavMesh.Huir(posDeadBird, eraJefe)
 ```
 
+#### Ciclo de llamadas al disparar a un pájaro
+![GameManagerBird (1)](https://user-images.githubusercontent.com/62613312/169374828-954803b6-819a-45ea-8b58-ca417361ea8c.jpg)
+
 ### UIManager:
 Se encarga de mostrar en pantalla el número de pájaros abatidos y los disparos usados.
 
