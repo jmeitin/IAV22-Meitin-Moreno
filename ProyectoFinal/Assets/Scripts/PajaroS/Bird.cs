@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Bird : MonoBehaviour //abstract si quieres que sea un template para el raycast
 {
-    bool jefe = false;
+    private bool jefe = false;
+    [SerializeField] private int points = 10;
     [SerializeField] private GameObject explosion;
 
     private void Start() //no es awake dado que se tiene que crear el GM primero
@@ -15,19 +16,20 @@ public class Bird : MonoBehaviour //abstract si quieres que sea un template para
             jefe = true;
     }
 
+    private void Update()
+    {
+        if (jefe)
+        {
+            //Debug.Log(transform.forward);
+        }
+    }
     public void KillBird()
     {
         GameObject g = Instantiate<GameObject>(explosion);
         g.transform.position = transform.position;
 
-        if (!jefe)
-        {
-            GameManager.instance.NormalBirdDied(10, transform.position);
-        }
-        else
-        {
-            GameManager.instance.PajaroJefeDied(30);
-        }
+        GameManager.instance.BirdDied(points, transform.position, jefe);
+
         this.gameObject.SetActive(false);
     }
 }

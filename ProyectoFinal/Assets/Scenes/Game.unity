@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 10
   explosion: {fileID: 4261954881937565204, guid: 35560be5787d96c4aa49b92658081d7e, type: 3}
 --- !u!114 &92738657
 MonoBehaviour:
@@ -324,6 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 578455894}
+  distanciaHuida: 10
 --- !u!20 &96007014 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 6244548910323157827, guid: e91dc1c67fbf4cd46b04e53cc37cdb93, type: 3}
@@ -545,6 +547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 10
   explosion: {fileID: 4261954881937565204, guid: 35560be5787d96c4aa49b92658081d7e, type: 3}
 --- !u!114 &171612029
 MonoBehaviour:
@@ -559,6 +562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 522266779}
+  distanciaHuida: 10
 --- !u!1 &215885874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,6 +1479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 10
   explosion: {fileID: 4261954881937565204, guid: 35560be5787d96c4aa49b92658081d7e, type: 3}
 --- !u!114 &598736707
 MonoBehaviour:
@@ -1489,6 +1494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 1403686211}
+  distanciaHuida: 10
 --- !u!1 &670774508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,6 +1659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 10
   explosion: {fileID: 4261954881937565204, guid: 35560be5787d96c4aa49b92658081d7e, type: 3}
 --- !u!114 &670774517
 MonoBehaviour:
@@ -1667,6 +1674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 796250538}
+  distanciaHuida: 10
 --- !u!1 &680060703 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 82203128d62070042a2a627939382b27, type: 3}
@@ -1942,6 +1950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 10
   explosion: {fileID: 4261954881937565204, guid: 35560be5787d96c4aa49b92658081d7e, type: 3}
 --- !u!114 &709190711
 MonoBehaviour:
@@ -1956,6 +1965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 1751008783}
+  distanciaHuida: 10
 --- !u!1 &753598344
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,6 +2130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 10
   explosion: {fileID: 4261954881937565204, guid: 35560be5787d96c4aa49b92658081d7e, type: 3}
 --- !u!114 &753598353
 MonoBehaviour:
@@ -2134,6 +2145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 1219822516}
+  distanciaHuida: 10
 --- !u!1001 &796250537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4816,6 +4828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 10
   explosion: {fileID: 4261954881937565204, guid: 35560be5787d96c4aa49b92658081d7e, type: 3}
 --- !u!114 &2114337442
 MonoBehaviour:
@@ -4830,6 +4843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 1240204374}
+  distanciaHuida: 10
 --- !u!1001 &2130662402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5042,7 +5056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489507, guid: 3de716c96c40692449a5915f06654b78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.5
+      value: -22
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489507, guid: 3de716c96c40692449a5915f06654b78, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5164,6 +5178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 57285501}
+  distanciaHuida: 10
 --- !u!65 &7743772105097254613
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5227,4 +5242,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3116fd8cafa8d0f4babe8f70fcb462fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 10
   explosion: {fileID: 4261954881937565204, guid: 35560be5787d96c4aa49b92658081d7e, type: 3}

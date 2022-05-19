@@ -11,7 +11,7 @@ public class RandomMoveTarget : MonoBehaviour
         //Debug.Log("Random");
         ////deshace camino ==> vuelve al (0,y,0)
         Vector3 pos = transform.position;
-        Debug.Log(pos);
+       // Debug.Log(pos);
         pos = -pos;
         //Debug.Log(pos);
         transform.Translate(pos.x, 0, pos.z);
@@ -19,25 +19,20 @@ public class RandomMoveTarget : MonoBehaviour
         float x = Random.Range(-dimensiones, dimensiones);
         float z = Random.Range(-dimensiones, dimensiones);
         transform.Translate(x, 0, z);
-        Debug.Log("Final Pos = "+ transform.position);
+        //Debug.Log("Final Pos = "+ transform.position);
     }
 
     public void SetPosition(Vector3 newPos)
     {
-        //DESHACE CAMINO
-        Vector3 pos = transform.position;
-        Debug.Log(pos);
-        pos = -pos;
-        transform.Translate(pos.x, 0, pos.z);
-        //nueva pos
-        transform.Translate(newPos.x, 0, newPos.z);
+        transform.position = newPos;
+       // transform.Translate(newPos.x, 0, newPos.z);
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Tree"))
         {
-            Debug.Log("Colision: Tree x Target");
+            //Debug.Log("Colision: Tree x Target");
 
             SetRandomPosition();
         }

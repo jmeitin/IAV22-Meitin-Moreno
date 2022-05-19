@@ -21,14 +21,4 @@ public class PajaroSeguir : MonoBehaviour
         navMeshAgent.destination = pajaroJefe.position;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //if (other.gameObject.layer == LayerMask.NameToLayer("Target"))
-        //{
-        //    Debug.Log("Colision: Bird x Target");
-
-        //    RandomMoveTarget target = other.gameObject.GetComponent<RandomMoveTarget>();
-        //    target.SetRandomPosition();
-        //}
-    }
 }
