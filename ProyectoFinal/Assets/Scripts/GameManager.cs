@@ -89,55 +89,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //public void NormalBirdDied(int destructionPoints, Vector3 pos)
-    //{
-    //    BirdDied(destructionPoints);
-    //    //COMPORTAMIENTO-------------
-    //    for (int i = 0; i < pajaros.Length; i++)
-    //    {
-    //        GameObject bird = pajaros[i];
-    //        if (pajaros[i].active)
-    //        {
-    //            BirdNavMesh nav = bird.GetComponent<BirdNavMesh>();
-    //            PajaroSeguir seguirAJefe = bird.GetComponent<PajaroSeguir>();
-    //            if (nav == null || seguirAJefe == null)
-    //                Debug.Log("GM encontro un pajaro sin BirdNavMesh/PajaroSeguir");
-    //            else
-    //            {
-    //                Debug.Log("Normallllll");
-    //                // DEJA DE SEGUIR AL JEFE ==> HA MUERTO
-    //                seguirAJefe.enabled = false;
-    //                //EMPIEZA A MOVERSE RANDOM
-    //                nav.enabled = true;
-    //                nav.Huir(pos);
-    //            }
-    //        }
-    //    }
-    //}
-
-    //public void PajaroJefeDied(int destructionPoints)
-    //{
-    //    //Debug.Log("JAJAJJAA");
-    //    BirdDied(destructionPoints);
-    //    for (int i = 0; i < pajaros.Length; i++)
-    //    {
-    //        GameObject bird = pajaros[i];
-    //        if (pajaros[i].active)
-    //        {
-    //            BirdNavMesh nav = bird.GetComponent<BirdNavMesh>();
-    //            PajaroSeguir seguirAJefe = bird.GetComponent<PajaroSeguir>();
-    //            if (nav == null || seguirAJefe == null)
-    //                Debug.Log("GM encontro un pajaro sin BirdNavMesh/PajaroSeguir");
-    //            else
-    //            {
-    //                //DEJA DE SEGUIR AL JEFE ==> HA MUERTO
-    //                seguirAJefe.enabled = false;
-    //                //EMPIEZA A MOVERSE RANDOM
-    //                nav.enabled = true;
-    //            }
-    //        }
-    //    }
-    //}
+    public void AtraerPajaro(Vector3 posPlayer)
+    {
+        if (pajaros[0].active)
+        {
+            pajaros[0].GetComponent<BirdNavMesh>().PlayerCall(posPlayer);
+        }
+    }
 
     public void ChangeScene(string sceneName)
     {

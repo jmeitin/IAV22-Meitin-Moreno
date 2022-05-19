@@ -11,6 +11,7 @@ public class BirdNavMesh : MonoBehaviour
     private RandomMoveTarget target;
 
     private NavMeshAgent navMeshAgent;
+    [SerializeField] private GameObject explosion;
 
     bool jefeFallecio = false;
     bool huyendo = false;
@@ -59,6 +60,21 @@ public class BirdNavMesh : MonoBehaviour
             GetComponent<PajaroSeguir>().enabled = true;
             this.enabled = false;
         }
+    }
+
+    public void PlayerCall(Vector3 playerPos)
+    {
+        if (esJefe)
+        {
+            Vector3 pos = new Vector3(playerPos.x, transform.position.y, playerPos.z);
+            target.SetPosition(pos);
+            if (explosion != null){
+                GameObject g = Instantiate<GameObject>(explosion);
+                g.transform.position = target.transform.position;  
+            }
+            
+        }
+        
     }
 
     private void Update()

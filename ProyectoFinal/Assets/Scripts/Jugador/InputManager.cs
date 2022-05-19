@@ -41,6 +41,10 @@ public class InputManager : MonoBehaviour
         {
             playerShoot.Shoot();
         }
+        else if (andando.Atraer.triggered)
+        {
+            GameManager.instance.AtraerPajaro(transform.position);
+        }
     }
     private void FixedUpdate()
     {
