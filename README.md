@@ -10,14 +10,11 @@ El cazador es controlado por el jugador, el cual puede realizar unicamente 2 acc
 * **Movimiento:** El jugador puede mover libremente al cazador por el escenario mediante el teclado.
 * **Disparar:** El jugador puede disparar mediante la tecla espaciadora.
 
-### Pajaro Jefe:
-El comportamiento del Pajaro Jefe viene definido por 1 algoritmo.
+### Pajaro:
+El comportamiento de los pajaros por los siguientes algoritmos:
 * **Merodear:** No es estrictamente un merodeo como el utilizado en las prácticas anteriores, si no un seguimiento a un target invisible que va cambiando a una nueva posición aletaoria cada vez que el pájaro le alcanza.
-
-### Pájaro Menor:
-* **Seguimiento:** Sigue al Pájaro jefe.
-* **Huida:** Si oye un disparo oye en dirección contraria por unos segundos.
-* **Merodeo:** En caso de que muera el Pájaro jefe, los pájaros menores pasan a merodear.
+* **Seguimiento:** Los pájaros menores siguien al pájaro jefe.
+* **Huida:** En caso de que un pájaro explote el resto huye en dirección contraria.
 
 ## Scripts:
 ### Player:
@@ -27,7 +24,7 @@ El juego tiene asociado un package de Input System (Version 1.0.2 - January 21, 
 
 El principal uso que se le da a este paquete en este proyecto es la de utilizar un **InputActions** llamado **PlayerInput** para gestionar las acciones que puede realizar el jugador, y a que teclas/ratón están asociados. 
 
-![image](https://user-images.githubusercontent.com/62613312/167615459-9c44360d-e5bd-4a9e-bd6d-66598a95a755.png)
+![image](https://user-images.githubusercontent.com/62613312/169347298-9be01c20-f214-4834-bff8-e29d48b6e83d.png)
 
 Una vez definidas las asociaciones entre input y acciones se genera un Script C# también llamado **PlayerInput** que puede ser consultado por otros Scripts con el fin de determinar que tecla se ha pulsado en ese frame.
 
@@ -60,17 +57,31 @@ function ProcessLook(Vector2 mouse):
    transform.Rotate(Vector3.up * mouseX * deltaTime * sensitivity
 ```
 
-#### PlayerShooter
-Se encarga de disparar una bala en la dirección en la que mira la cámara en ese instante. Dichas balas no son entidades físicas. Unicamente se proyecta un raycast desde la posición de player, y en caso de chocar con un pájaro, avisa al GameManager.
+#### PlayerShoot
+Se encarga de disparar una bala en la dirección en la que mira la cámara en ese instante. Dichas balas no son entidades físicas. Unicamente se proyecta un **raycast** desde la posición de player, y en caso de chocar con un pájaro, avisa al GameManager.
+
+```js
+function Shoot():
+
+   # Proyectar Ray
+   ray = Ray(camara.position, camara.vectorForward)
+   # comprobar colision ==> En caso de detectar colision, objetivo devuelve una ref a el. Por eso es out.
+   if Raycast(ray, out objetivo) then
+      if(objetivo is pajaro)
+         KillBird
+```
 
 #### Input Manager:
 Se encarga de generar una instancia del **PlayerInput** para poder enviarle al PlayerMotor y PlayerLook los valores del teclado y ratón en los Update. 
 ```js
 speed: value, with default value of 5
 
+function Update():
+   if andando.Disparar.triggered then
+      playerShooter.ProcessShoot(disparar)
+   
 function FixedUpdate():
     playerMotor.ProcessMove(andando.Movimiento)
-    playerShooter.ProcessShoot(disparar)
     
 function LateUpdate()
     playerLook.ProcessLook(andanado.Mirar)
@@ -87,6 +98,9 @@ Una entidad invisible que sirve como destino del NavMeshAgent del pájaro jefe. 
 # Las dimensiones del area sobre la que puede volar el pájaro.
 dimensiones: float, with default value of 30
 
+    unction SetRandomPosition(newPos)
+        transform.SetPosition(newPos)
+        
     function SetRandomPosition()
         x = Random.Range(-dimensiones, dimensiones)
         y = position.y
@@ -99,8 +113,19 @@ dimensiones: float, with default value of 30
 ```
 
 ### Pajaro Jefe:
-#### Merodear:
-Merodea mediante un NavMeshAgent. Hay un objeto vacío en la escena que funciona a modo de target. El pájaro se mueve hasta él evitando los obstáculos en el camnio, y una vez lo alcanza, el target se teletransporta a una nueva posición aletaroria en el mapa. De esta manera vuelve a comenzar el vuelo del pájaro jefe.
+#### Bird:
+Los pájaros tiene aosciados un script que los identifica como tales, guarda su valor en puntos que puede ganar el player si los mata, e instancia una explosión al morir.
+```js
+soyJefe: bool, default value false
+points: value, default value 10
+
+function KillBird:
+   Instantiate explosion
+   GameManager.BirdDied(points, position, soyJefe)
+   Deactivate this gameObject
+```
+#### BirdNavMesh:
+Los pájaross merodean mediante un NavMeshAgent. Hay un objeto vacío en la escena que funciona a modo de target. El pájaro se mueve hasta él evitando los obstáculos en el camnio, y una vez lo alcanza, el target se teletransporta a una nueva posición aletaroria en el mapa. De esta manera vuelve a comenzar el vuelo del pájaro jefe. Tambien hay un método Huida que será llamado cuando muera un pájaro. Este facilitará el cambio de estados entre seguir y huir.
 ```js
 target: Transform
 navMeshAgent: NavMeshAgent
@@ -108,18 +133,36 @@ navMeshAgent: NavMeshAgent
 function Update():
     navMeshAgent.destination = target.position
     
-function OnTriggerEnter(Collider other)
+function OnTriggerEnter(Collider other):
         # El pajaro alcanzo su objetivo
         if other == Target then
             target.randomMoveTarget.SetRandomPosition();
+           
+#Ha muerto un pajaro disparado
+function Huir(Vector3 disparoPos, bool jefeDied):
+   dirHuida = currentPos - disparo
+   target.SetPosition(dirHuida + currentPos)
+   Invoke "SinMiedo" in 5 seconds
+    
+function SinMiedo:
+   # Vuelvo a merodear de manera aleatoria
+   if jefeDied || soyJefe then
+      target.SetRandomPosition
+   # Vuelvo a seguir al jefe y dejo de merodear
+   else then
+      PajaroSeguir.enable
+      this.disable
 ```
 
-### Pajaro Menor:
-#### Seguimiento:
-El seguimiento funciona al igual que el Merodeo salvo que el target es el pájaro jefe.
+### Pájaro Menor:
+#### PajaroSeguir:
+Modifica el navMesh para que se acerque al target, en este caso el Pájaro jefe. No tiene ningún otro método.
 
-#### Huida:
-En caso de que se produzca un disparo, los pájaros en proximidad huyen en dirección contraria.
+#### Bird:
+*Descrito anteriormente.*
+
+#### BirdNavMesh:
+*Descrito anteriormente.*
 
 ### GameManager:
 Se encarga de gestionar la puntuación, la escena, y el número de pájaros.
@@ -131,11 +174,23 @@ aliveBirds : value, default value Number of birds in the scene;
 score : value, default value 0;
 shots : value, default value 0;;
 
-function BirdDied(int destructionPoints):
+function BirdDied(int destructionPoints, Vector3 posDeadBird, bool eraJefe):
+    # MODIFICAR UI
     aliveBirds--
     deadBirds++
     score += destructionPoints
     update UI
+    
+    # MODIFICAR COMPORTAMIENTO
+    //COMPORTAMIENTO
+    for all pajaros
+      if pajaro is Jefe then
+         BirdNavMesh.Huir(posDeadBird, eraJefe)
+         
+      else if pajaro is Menor then
+         DeActivate PajaroSeguir
+         Activate BirdNavMesh
+         BirdNavMesh.Huir(posDeadBird, eraJefe)
 ```
 
 ### UIManager:
