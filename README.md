@@ -194,7 +194,7 @@ function BirdDied(int destructionPoints, Vector3 posDeadBird, bool eraJefe):
 ```
 
 #### Ciclo de llamadas al disparar a un pájaro
-![GameManagerBird (1)](https://user-images.githubusercontent.com/62613312/169374828-954803b6-819a-45ea-8b58-ca417361ea8c.jpg)
+![GameManagerBird (2)](https://user-images.githubusercontent.com/62613312/169375958-f42bceba-b21a-4320-b36b-0554f10fe0f2.jpg)
 
 ### UIManager:
 Se encarga de mostrar en pantalla el número de pájaros abatidos y los disparos usados.
