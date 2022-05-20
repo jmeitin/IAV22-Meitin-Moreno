@@ -15,6 +15,7 @@ public class BirdNavMesh : MonoBehaviour
 
     bool jefeFallecio = false;
     bool huyendo = false;
+    private Vector3 playerPos = Vector3.zero;
 
     private void Awake()
     {
@@ -62,19 +63,23 @@ public class BirdNavMesh : MonoBehaviour
         }
     }
 
-    public void PlayerCall(Vector3 playerPos)
+    public void PlayerCall(Vector3 pos)
     {
         if (esJefe)
         {
-            Vector3 pos = new Vector3(playerPos.x, transform.position.y, playerPos.z);
-            target.SetPosition(pos);
-            if (explosion != null){
-                GameObject g = Instantiate<GameObject>(explosion);
-                g.transform.position = target.transform.position;  
-            }
-            
+            playerPos = pos;
+            Invoke("PlayerCallAux", 2);
         }
-        
+    }
+
+    private void PlayerCallAux()
+    {
+        target.SetPosition(new Vector3(playerPos.x, transform.position.y, playerPos.z));
+        if (explosion != null)
+        {
+            GameObject g = Instantiate<GameObject>(explosion);
+            g.transform.position = playerPos;
+        }
     }
 
     private void Update()

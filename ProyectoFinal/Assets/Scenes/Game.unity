@@ -326,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 578455894}
   distanciaHuida: 10
-  explosion: {fileID: 4261954881937565204, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
 --- !u!20 &96007014 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 6244548910323157827, guid: e91dc1c67fbf4cd46b04e53cc37cdb93, type: 3}
@@ -564,7 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 522266779}
   distanciaHuida: 10
-  explosion: {fileID: 4261954881937565204, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
 --- !u!1 &215885874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,7 +1497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 1403686211}
   distanciaHuida: 10
-  explosion: {fileID: 4261954881937565204, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
 --- !u!1 &670774508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,7 +1678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 796250538}
   distanciaHuida: 10
-  explosion: {fileID: 4261954881937565204, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
 --- !u!1 &680060703 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 82203128d62070042a2a627939382b27, type: 3}
@@ -1970,7 +1970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 1751008783}
   distanciaHuida: 10
-  explosion: {fileID: 4261954881937565204, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
 --- !u!1 &753598344
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,7 +2151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 1219822516}
   distanciaHuida: 10
-  explosion: {fileID: 4261954881937565204, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
 --- !u!1001 &796250537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4850,7 +4850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 1240204374}
   distanciaHuida: 10
-  explosion: {fileID: 4261954881937565204, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
 --- !u!1001 &2130662402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5186,7 +5186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 57285501}
   distanciaHuida: 10
-  explosion: {fileID: 4261954881937565204, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
 --- !u!65 &7743772105097254613
 BoxCollider:
   m_ObjectHideFlags: 0

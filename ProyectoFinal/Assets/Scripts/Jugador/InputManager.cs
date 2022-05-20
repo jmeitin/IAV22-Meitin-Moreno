@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     private PlayerMotor playerMotor;
     private PlayerLook playerLook;
     private PlayerShoot playerShoot;
+    private Camera camara;
 
     private void Awake()
     {
@@ -29,10 +30,15 @@ public class InputManager : MonoBehaviour
         if (playerLook == null)
             Debug.Log("InputManager no encuentra PlayerLook asociado a Player.");
 
+        camara = playerLook.camara;
+        if (camara == null)
+            Debug.Log("PlayerShoot no encuentra PlayerLook asociado a Player o la Main Camara.");
+
         //DISPARAR PLAYER
         playerShoot = GetComponent<PlayerShoot>();
         if (playerShoot == null)
             Debug.Log("InputManager no encuentra PlayerShoot asociado a Player.");
+        
     }
 
     private void Update()
@@ -43,6 +49,9 @@ public class InputManager : MonoBehaviour
         }
         else if (andando.Atraer.triggered)
         {
+            //Vector3 dir = camara.transform.forward;
+            //float angle = Vector2.Angle(new Vector2(1, 0), new Vector2(dir.x, dir.z));
+            ////Debug.Log("ANGULO " + angle);
             GameManager.instance.AtraerPajaro(transform.position);
         }
     }
