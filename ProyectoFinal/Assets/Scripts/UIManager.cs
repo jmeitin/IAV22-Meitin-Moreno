@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI shotsText;
     public TextMeshProUGUI aliveText;
     public TextMeshProUGUI deadText;
+    public TextMeshProUGUI sprayText;
 
     private int enemiesLeft;
 
@@ -18,7 +19,7 @@ public class UIManager : MonoBehaviour
         GameManager.instance.SetUIManager(this);
     }
 
-    public void Init(int score, int deadBirds, int aliveBirds)
+    public void Init(int score, int deadBirds, int aliveBirds, int spray)
     {
         //Debug.Log("NUMENEMIES = " + aliveBirds);
         scoreText.text = score.ToString();
@@ -26,6 +27,7 @@ public class UIManager : MonoBehaviour
         shotsText.text = "0";
         aliveText.text = aliveBirds.ToString();
         enemiesLeft = aliveBirds;
+        sprayText.text = spray.ToString();
     }
 
     public void RemoveBird(int deadBirds, int aliveBirds, int score)
@@ -40,8 +42,11 @@ public class UIManager : MonoBehaviour
     {
         shotsText.text = shots.ToString();
         Debug.Log("HAHAHAHA"+ shots);
-
     }
 
+    public void RemoveSpray(int spray)
+    {
+        sprayText.text = spray.ToString();
+    }
 
 }

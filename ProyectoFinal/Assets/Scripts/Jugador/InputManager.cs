@@ -52,7 +52,8 @@ public class InputManager : MonoBehaviour
             //Vector3 dir = camara.transform.forward;
             //float angle = Vector2.Angle(new Vector2(1, 0), new Vector2(dir.x, dir.z));
             ////Debug.Log("ANGULO " + angle);
-            GameManager.instance.AtraerPajaro(transform.position);
+            if(GameManager.instance.SpraysAvailable())
+                GameManager.instance.AtraerPajaro(transform.position);
         }
     }
     private void FixedUpdate()

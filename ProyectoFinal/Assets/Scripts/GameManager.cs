@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private int aliveBirds = 0;
     private int score = 0;
     private int shots = 0;
+    [SerializeField] private int spray = 3;
     private UIManager uiManager;
     bool ramon = true;
 
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         if (ramon == true)
         {
-            uiManager.Init(score, deadBirds, aliveBirds);
+            uiManager.Init(score, deadBirds, aliveBirds, spray);
             ramon = false;
         }
     }
@@ -95,6 +96,17 @@ public class GameManager : MonoBehaviour
         {
             pajaros[0].GetComponent<BirdNavMesh>().PlayerCall(posPlayer);
         }
+    }
+
+    public bool SpraysAvailable()
+    {
+        if (spray > 0)
+        {
+            spray--;
+            uiManager.RemoveSpray(spray);
+            return true;
+        }
+        return false;
     }
 
     public void ChangeScene(string sceneName)
