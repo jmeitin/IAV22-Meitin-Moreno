@@ -33,8 +33,8 @@ public class RandomMoveTarget : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Tree"))
         {
             //Debug.Log("Colision: Tree x Target");
-
-            SetRandomPosition();
+            transform.Translate(5, 0, 0);
+            //SetRandomPosition();
         }
     }
 }

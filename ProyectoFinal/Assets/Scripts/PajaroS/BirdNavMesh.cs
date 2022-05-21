@@ -83,17 +83,14 @@ public class BirdNavMesh : MonoBehaviour
 
     private void SinMiedo()
     {
-        if (huyendo)
-        {
-            Debug.Log("SinMiedo");
-            if (jefeFallecio || esJefe)
-                target.SetRandomPosition();
+        Debug.Log("SinMiedo");
+        if (jefeFallecio || esJefe)
+            target.SetRandomPosition();
 
-            else //sigue vivo el jefe
-            {
-                GetComponent<PajaroSeguir>().enabled = true;
-                this.enabled = false;
-            }
+        else //sigue vivo el jefe
+        {
+            GetComponent<PajaroSeguir>().enabled = true;
+            this.enabled = false;
         }
     }
 
