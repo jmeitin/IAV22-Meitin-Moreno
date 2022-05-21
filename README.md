@@ -4,6 +4,8 @@
 ## Descripción:
 Scared Bird es un juego shooter en primera persona para PC donde el jugador toma el rol de un Cazador que debe acabar con todos los pájaros en el bosque. Estos pájaros vuelan en bandada siguiendo al Pájaro Jefe. Cuando oyen un disparo, los pájaros menores huyen del lugar, hasta haberse tranquilizado al cabo de unos segundos. Al pasar cierto intervalo de tiempo vuelven a seguir al pájaro jefe como hacían antes. En caso de que el cazador mate al Pájaro jefe, la bandada se desintegrará y todos los pájaros pasarán a volar de manera aleatoria. El juego acabará cuando el Cazador haya acabado con todos los pájaros.
 
+* **Video demostración:** https://www.youtube.com/watch?v=rZg6bURmuxk&ab_channel=JAVIERMEIT%C3%8DNMORENO
+
 ## Entidades:
 ### Cazador:
 El cazador es controlado por el jugador, el cual puede realizar unicamente 2 acciones:
