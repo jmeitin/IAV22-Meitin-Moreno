@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] private GameObject[] pajaros;
+    bool jefeIsAlive = true;
     private int deadBirds = 0;
     private int aliveBirds = 0;
     private int score = 0;
@@ -24,6 +25,12 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
         else Destroy(this.gameObject);
+    }
+
+    private void Start()
+    {
+        if (pajaros.Length == 0)
+            Debug.Log("Asocia los pajaros al GM");
     }
 
 
@@ -44,7 +51,11 @@ public class GameManager : MonoBehaviour
 
     public void BirdDied(int destructionPoints, Vector3 pos, bool jefeDied)
     {
-        if (jefeDied) Debug.Log("HA MUERTO EL JEFE");
+        if (jefeDied)
+        {
+            jefeIsAlive = false;
+            Debug.Log("HA MUERTO EL JEFE");
+        }
         else Debug.Log("HA MUERTO UN MINION");
 
         //INTERFAZ------------------
@@ -100,7 +111,7 @@ public class GameManager : MonoBehaviour
 
     public bool SpraysAvailable()
     {
-        if (spray > 0)
+        if (spray > 0 && jefeIsAlive)
         {
             spray--;
             uiManager.RemoveSpray(spray);

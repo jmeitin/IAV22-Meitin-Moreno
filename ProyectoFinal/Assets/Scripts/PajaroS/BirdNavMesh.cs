@@ -5,17 +5,22 @@ using UnityEngine.AI; //NavMesh
 
 public class BirdNavMesh : MonoBehaviour
 {
+    [SerializeField] private GameObject explosion;
     [SerializeField] private Transform movePositionTransform;
     [SerializeField] private int distanciaHuida = 20000;
-    private bool esJefe = false;
+    [SerializeField] private int dimensiones = 40;
+    [SerializeField] private int tiempoHuida = 5;
+
     private RandomMoveTarget target;
-
     private NavMeshAgent navMeshAgent;
-    [SerializeField] private GameObject explosion;
 
-    bool jefeFallecio = false;
-    bool huyendo = false;
+    private bool esJefe = false;
+    private bool huyendo = false;
+    private bool jefeFallecio = false;
+    private bool playerCalled = false;
     private Vector3 playerPos = Vector3.zero;
+    private float lastChange = 0;
+    private float INTERVAL = 3;
 
     private void Awake()
     {
@@ -34,7 +39,26 @@ public class BirdNavMesh : MonoBehaviour
     private void OnEnable()
     {
         target.enabled = true;
-        if(esJefe || jefeFallecio) target.SetRandomPosition();
+        if (esJefe || jefeFallecio)
+        {
+            //Debug.Log("Activado");
+            target.SetRandomPosition();
+        }
+    }
+
+    private void Update()
+    {
+        navMeshAgent.destination = movePositionTransform.position;
+        if (!huyendo && !playerCalled)
+        {
+            lastChange += Time.deltaTime;
+            if(lastChange > INTERVAL)
+            {
+                target.SetRandomPosition();
+                INTERVAL = Random.Range(3, 15) + lastChange;
+            }
+
+        }
     }
 
     public void Huir(Vector3 disparo, bool jefeDied)
@@ -42,24 +66,34 @@ public class BirdNavMesh : MonoBehaviour
         huyendo = true;
         Vector3 dir = transform.position- disparo;
         dir.Normalize();
-        Vector3 newPos = dir * distanciaHuida*2 + transform.position;
-        Debug.Log(newPos);
+        Vector3 newPos = dir*distanciaHuida * 2 + transform.position;
+        if (newPos.x > dimensiones || newPos.x < -dimensiones || newPos.z < -dimensiones ||newPos.z > dimensiones)
+        {
+            if (dir.x > 0) newPos.x = dimensiones;
+            else newPos.x = -dimensiones;
+            if (dir.z > 0) newPos.z = dimensiones;
+            else newPos.x = -dimensiones;
+        }
+        //Debug.Log("POS TARGET"+newPos);
         target.SetPosition(newPos);
 
         if (jefeDied) jefeFallecio = jefeDied;
-        Invoke("SinMiedo", 5);
+        Invoke("SinMiedo", tiempoHuida);
     }
 
     private void SinMiedo()
     {
-        Debug.Log("SinMiedo");
-        if (jefeFallecio || esJefe)
-            target.SetRandomPosition();
-   
-        else //sigue vivo el jefe
+        if (huyendo)
         {
-            GetComponent<PajaroSeguir>().enabled = true;
-            this.enabled = false;
+            Debug.Log("SinMiedo");
+            if (jefeFallecio || esJefe)
+                target.SetRandomPosition();
+
+            else //sigue vivo el jefe
+            {
+                GetComponent<PajaroSeguir>().enabled = true;
+                this.enabled = false;
+            }
         }
     }
 
@@ -82,15 +116,14 @@ public class BirdNavMesh : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        navMeshAgent.destination = movePositionTransform.position;
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == target.gameObject)
         {
+            playerCalled = false;
+            huyendo = false;
             //Debug.Log("Colision: Bird x Target");
             target.SetRandomPosition();
         }

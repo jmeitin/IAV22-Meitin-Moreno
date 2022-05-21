@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI aliveText;
     public TextMeshProUGUI deadText;
     public TextMeshProUGUI sprayText;
+    public TextMeshProUGUI ganarText;
 
     private int enemiesLeft;
 
@@ -36,12 +37,14 @@ public class UIManager : MonoBehaviour
         deadText.text = deadBirds.ToString();
         aliveText.text = aliveBirds.ToString();
         enemiesLeft--;
+        if (aliveBirds == 0)
+           ganarText.enabled = true;
     }
 
     public void AmountShots(int shots)
     {
         shotsText.text = shots.ToString();
-        Debug.Log("HAHAHAHA"+ shots);
+        Debug.Log("HAHAHAHA "+ shots);
     }
 
     public void RemoveSpray(int spray)
