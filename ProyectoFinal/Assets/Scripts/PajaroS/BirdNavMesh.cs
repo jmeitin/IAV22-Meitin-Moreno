@@ -111,6 +111,7 @@ public class BirdNavMesh : MonoBehaviour
 
     private void PlayerCallAux()
     {
+        playerCalled = true;
         //EL SPRAY SE PONE EN LA ULTIMA POS DE PLAYER (SOLO SE ACTUALIZA EN PlayerCall)
         target.SetPosition(new Vector3(playerPos.x, transform.position.y, playerPos.z));
         if (spray != null)

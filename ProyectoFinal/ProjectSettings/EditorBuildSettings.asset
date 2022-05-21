@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/ScaredBird.unity
+    guid: 8c5c22e3ddc2f30458aa508029affa27
   m_configObjects: {}
