@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI; //NavMesh
 
+//PAJARO MENOR SIGUE A EL PAJARO JEFE
 public class PajaroSeguir : MonoBehaviour
 {
     [SerializeField] private Transform pajaroJefe;

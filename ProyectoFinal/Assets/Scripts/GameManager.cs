@@ -8,14 +8,15 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] private GameObject[] pajaros;
+    //numero de veces que puede player llamar al pajaro jefe
+    [SerializeField] private int spray = 3; 
     bool jefeIsAlive = true;
     private int deadBirds = 0;
     private int aliveBirds = 0;
     private int score = 0;
     private int shots = 0;
-    [SerializeField] private int spray = 3;
     private UIManager uiManager;
-    bool ramon = true;
+    bool actualizarUI = true;
 
     void Awake()
     {
@@ -29,46 +30,44 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (pajaros.Length == 0)
-            Debug.Log("Asocia los pajaros al GM");
+        //Aviso 
+        Debug.Log("Número de pájaros asociados al GM: " + pajaros.Length);
     }
 
+    //GUARDAR REFERENCIA AL UI MANAGER
+    public void SetUIManager(UIManager uim) { uiManager = uim; }
 
-    public void SetUIManager(UIManager uim)
-    {
-        uiManager = uim;
-        //uim.Init(score, deadBirds, aliveBirds);
+    //ACTUALIZAR EL NUMERO DE PAJAROS
+    public void AddBird() { aliveBirds++; }
+
+    //ACTUALIZAR EL NUMERO DE BALAS
+    public void AddBullet()
+    {   
+        shots++;
+        uiManager.AmountShots(shots);
     }
 
     private void Update()
     {
-        if (ramon == true)
-        {
+        if (actualizarUI == true)  { //ESTADO INICIAL UI MANAGER
             uiManager.Init(score, deadBirds, aliveBirds, spray);
-            ramon = false;
+            actualizarUI = false;
         }
     }
 
     public void BirdDied(int destructionPoints, Vector3 pos, bool jefeDied)
     {
         if (jefeDied)
-        {
             jefeIsAlive = false;
-            Debug.Log("HA MUERTO EL JEFE");
-        }
-        else Debug.Log("HA MUERTO UN MINION");
 
-        //INTERFAZ------------------
+        //ACTUALIZAR INTERFAZ------------------
         aliveBirds--;
         deadBirds++;
-        //Debug.Log("Birds Remaining = " + aliveBirds);
         score += destructionPoints;
         if (uiManager != null)
-        {
             uiManager.RemoveBird(deadBirds, aliveBirds, score);
-        }
 
-        //COMPORTAMIENTO
+        //ACTUALIZAR COMPORTAMIENTO DE LOS PAJAROS
         for (int i = 0; i < pajaros.Length; i++)
         {
             GameObject bird = pajaros[i];
@@ -77,36 +76,30 @@ public class GameManager : MonoBehaviour
                 BirdNavMesh seguirTarget = bird.GetComponent<BirdNavMesh>();
                 PajaroSeguir seguirAJefe = bird.GetComponent<PajaroSeguir>();                    
 
-                //ES JEFE
+                //HUYE EL JEFE
                 if (seguirTarget != null && seguirAJefe == null)
-                {
-                    Debug.Log("JEFE HUYE");
                     seguirTarget.Huir(pos, jefeDied);
-                }
-                //ES MINION
+
+                //HUYE EL PAJARO MENOR
                 else if (seguirTarget != null && seguirAJefe != null)
                 {
-                    Debug.Log("NORMAL HUYE");
                     // DEJA DE SEGUIR AL JEFE TEMPORALMENTE
                     seguirAJefe.enabled = false;
                     //EMPIEZA A MOVERSE RANDOM
                     seguirTarget.enabled = true;
                     seguirTarget.Huir(pos, jefeDied);
                 }
-                else
-                {
-                    Debug.Log("GM encontro un pajaro sin BirdNavMesh/PajaroSeguir");
-                }
+
+                else Debug.Log("GM encontro un pajaro sin BirdNavMesh/PajaroSeguir");
             }
         }
     }
 
+    //EL PLAYER QUIERE TIRAR UN SPARY ==> ATRAER AL JEFE
     public void AtraerPajaro(Vector3 posPlayer)
     {
-        if (pajaros[0].active)
-        {
+        if (pajaros[0].active) //Pajaro Jefe es el 0
             pajaros[0].GetComponent<BirdNavMesh>().PlayerCall(posPlayer);
-        }
     }
 
     public bool SpraysAvailable()
@@ -120,28 +113,16 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public void ChangeScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
-
-    public void AddBird()
-    {
-        aliveBirds++;
-        // Debug.Log("Nuevo Bird = " + aliveBirds);
-    }
-
-    public void AddBullet()
-    {
-        shots++;
-        uiManager.AmountShots(shots);
-    }
-
+    //POR SI ACASO EXPANDO EL JUEGO---------------------------------------------
     private void GameOver() //menu
     {
         score = 0;
         deadBirds = 0;
         aliveBirds = 0;
         //ChangeScene("Menu");
+    }
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }

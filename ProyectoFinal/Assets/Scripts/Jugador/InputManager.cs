@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem; //package
 
+// En vez del InputSystem que viene por defecto utilizo un paquete que me es más cómodo.
+// Véase el README con la docmuentación para ver como funciona en mayor detalle.
+
 public class InputManager : MonoBehaviour
 {
     private PlayerInput playerInput; //solo se utiliza en el Awake
@@ -38,33 +41,31 @@ public class InputManager : MonoBehaviour
         playerShoot = GetComponent<PlayerShoot>();
         if (playerShoot == null)
             Debug.Log("InputManager no encuentra PlayerShoot asociado a Player.");
-        
     }
 
     private void Update()
     {
+        // DISPARAR
         if (andando.Disparar.triggered)
-        {
             playerShoot.Shoot();
-        }
+
+        // LANZAR SPRAY
         else if (andando.Atraer.triggered)
         {
-            //Vector3 dir = camara.transform.forward;
-            //float angle = Vector2.Angle(new Vector2(1, 0), new Vector2(dir.x, dir.z));
-            ////Debug.Log("ANGULO " + angle);
             if(GameManager.instance.SpraysAvailable())
                 GameManager.instance.AtraerPajaro(transform.position);
         }
     }
     private void FixedUpdate()
     {
+        // MOVERSE
         playerMotor.ProcessMove(andando.Movimiento.ReadValue<Vector2>());
     }
 
     private void LateUpdate()
     {
+        // MOVER LA CAMARA
         playerLook.ProcessLook(andando.Mirar.ReadValue<Vector2>());
-
     }
 
     private void OnEnable()
@@ -75,7 +76,5 @@ public class InputManager : MonoBehaviour
     private void OnDisable()
     {
         andando.Disable();
-    }
-
-   
+    }   
 }

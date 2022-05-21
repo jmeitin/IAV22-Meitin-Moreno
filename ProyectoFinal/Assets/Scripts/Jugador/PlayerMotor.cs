@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// SE ENCARGA DEL MOVIMIENTO DE PLAYER
 public class PlayerMotor : MonoBehaviour
 {
     //Componente asociado al prefab
     private CharacterController controller; 
-    //variables velocidad
-    private Vector3 velocity;
     public float speed = 5f;
     //* le podria meter gravedad ==> jump
 

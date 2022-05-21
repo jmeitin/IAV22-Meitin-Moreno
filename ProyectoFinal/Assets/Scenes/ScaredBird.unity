@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264dbcaf432003844976941ba51b369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  spray: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
   movePositionTransform: {fileID: 520316117}
   distanciaHuida: 20
   dimensiones: 40
@@ -659,7 +659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264dbcaf432003844976941ba51b369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  spray: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
   movePositionTransform: {fileID: 1533473226}
   distanciaHuida: 20
   dimensiones: 40
@@ -1869,6 +1869,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4826759838006489509, guid: 3de716c96c40692449a5915f06654b78, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489511, guid: 3de716c96c40692449a5915f06654b78, type: 3}
       propertyPath: m_Name
       value: Target (1)
@@ -2931,7 +2935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264dbcaf432003844976941ba51b369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  spray: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
   movePositionTransform: {fileID: 1343508101}
   distanciaHuida: 20
   dimensiones: 40
@@ -3853,6 +3857,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489507, guid: 3de716c96c40692449a5915f06654b78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826759838006489509, guid: 3de716c96c40692449a5915f06654b78, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489511, guid: 3de716c96c40692449a5915f06654b78, type: 3}
@@ -4783,7 +4791,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &909251213
 GameObject:
@@ -5182,7 +5190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264dbcaf432003844976941ba51b369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  spray: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
   movePositionTransform: {fileID: 1614740020}
   distanciaHuida: 20
   dimensiones: 40
@@ -5614,6 +5622,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4826759838006489509, guid: 3de716c96c40692449a5915f06654b78, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489511, guid: 3de716c96c40692449a5915f06654b78, type: 3}
       propertyPath: m_Name
       value: Target (6)
@@ -5965,6 +5977,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4826759838006489509, guid: 3de716c96c40692449a5915f06654b78, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489511, guid: 3de716c96c40692449a5915f06654b78, type: 3}
       propertyPath: m_Name
       value: Target (11)
@@ -6313,7 +6329,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1124592012
 GameObject:
@@ -6512,7 +6528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264dbcaf432003844976941ba51b369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  spray: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
   movePositionTransform: {fileID: 937236783}
   distanciaHuida: 20
   dimensiones: 40
@@ -6646,7 +6662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264dbcaf432003844976941ba51b369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  spray: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
   movePositionTransform: {fileID: 140559795}
   distanciaHuida: 20
   dimensiones: 40
@@ -6861,7 +6877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264dbcaf432003844976941ba51b369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  spray: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
   movePositionTransform: {fileID: 465169854}
   distanciaHuida: 20
   dimensiones: 40
@@ -8065,6 +8081,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4826759838006489509, guid: 3de716c96c40692449a5915f06654b78, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489511, guid: 3de716c96c40692449a5915f06654b78, type: 3}
       propertyPath: m_Name
       value: Target (8)
@@ -8124,6 +8144,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489507, guid: 3de716c96c40692449a5915f06654b78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826759838006489509, guid: 3de716c96c40692449a5915f06654b78, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489511, guid: 3de716c96c40692449a5915f06654b78, type: 3}
@@ -8197,7 +8221,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2425053955197546333, guid: e91dc1c67fbf4cd46b04e53cc37cdb93, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2425053955197546333, guid: e91dc1c67fbf4cd46b04e53cc37cdb93, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8298,6 +8322,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489507, guid: 3de716c96c40692449a5915f06654b78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826759838006489509, guid: 3de716c96c40692449a5915f06654b78, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489511, guid: 3de716c96c40692449a5915f06654b78, type: 3}
@@ -9038,7 +9066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264dbcaf432003844976941ba51b369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  spray: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
   movePositionTransform: {fileID: 506708314}
   distanciaHuida: 20
   dimensiones: 40
@@ -9244,7 +9272,7 @@ Transform:
   - {fileID: 1815002589}
   - {fileID: 346621721}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1699794074
 PrefabInstance:
@@ -9299,6 +9327,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489507, guid: 3de716c96c40692449a5915f06654b78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826759838006489509, guid: 3de716c96c40692449a5915f06654b78, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489511, guid: 3de716c96c40692449a5915f06654b78, type: 3}
@@ -9404,6 +9436,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489507, guid: 3de716c96c40692449a5915f06654b78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826759838006489509, guid: 3de716c96c40692449a5915f06654b78, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489511, guid: 3de716c96c40692449a5915f06654b78, type: 3}
@@ -9546,6 +9582,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489507, guid: 3de716c96c40692449a5915f06654b78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826759838006489509, guid: 3de716c96c40692449a5915f06654b78, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489511, guid: 3de716c96c40692449a5915f06654b78, type: 3}
@@ -9693,7 +9733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264dbcaf432003844976941ba51b369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  spray: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
   movePositionTransform: {fileID: 1501263854}
   distanciaHuida: 20
   dimensiones: 40
@@ -10046,6 +10086,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4826759838006489509, guid: 3de716c96c40692449a5915f06654b78, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489511, guid: 3de716c96c40692449a5915f06654b78, type: 3}
       propertyPath: m_Name
       value: Target (10)
@@ -10103,7 +10147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264dbcaf432003844976941ba51b369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  spray: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
   movePositionTransform: {fileID: 1418653924}
   distanciaHuida: 20
   dimensiones: 40
@@ -10839,7 +10883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264dbcaf432003844976941ba51b369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  spray: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
   movePositionTransform: {fileID: 2085511900}
   distanciaHuida: 20
   dimensiones: 40
@@ -10975,6 +11019,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489507, guid: 3de716c96c40692449a5915f06654b78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826759838006489509, guid: 3de716c96c40692449a5915f06654b78, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4826759838006489511, guid: 3de716c96c40692449a5915f06654b78, type: 3}
@@ -12897,7 +12945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264dbcaf432003844976941ba51b369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
+  spray: {fileID: 9151069288678118139, guid: 65f6a0fbb06898c4aab2627d6c658ad9, type: 3}
   movePositionTransform: {fileID: 637169719}
   distanciaHuida: 20
   dimensiones: 40

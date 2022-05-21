@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//SE ENCARGA DEL MOVIMIENTO DE LA CÁMARA
 public class PlayerLook : MonoBehaviour
 {
     public Camera camara;
-    public float xSensitivity = 30f;
-    public float ySensitivity = 30f;
 
+    private float xSensitivity = 30f;
+    private float ySensitivity = 30f;
     private float xRotation = 0f;
     
     public void ProcessLook(Vector2 input)

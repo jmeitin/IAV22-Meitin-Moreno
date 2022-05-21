@@ -13,38 +13,34 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI sprayText;
     public TextMeshProUGUI ganarText;
 
-    private int enemiesLeft;
-
     void Start()
     {
+        // PASO REFERENCIA AL GM
         GameManager.instance.SetUIManager(this);
     }
 
     public void Init(int score, int deadBirds, int aliveBirds, int spray)
     {
-        //Debug.Log("NUMENEMIES = " + aliveBirds);
         scoreText.text = score.ToString();
         deadText.text = deadBirds.ToString();
         shotsText.text = "0";
         aliveText.text = aliveBirds.ToString();
-        enemiesLeft = aliveBirds;
         sprayText.text = spray.ToString();
     }
 
+    //ACTUALIZAR INFO INTERFAZ------------------------------------------------------------------
     public void RemoveBird(int deadBirds, int aliveBirds, int score)
     {
         scoreText.text = score.ToString();
         deadText.text = deadBirds.ToString();
         aliveText.text = aliveBirds.ToString();
-        enemiesLeft--;
-        if (aliveBirds == 0)
+        if (aliveBirds == 0) //NO QUEDAN PAJAROS ==> MENSAJE GANAR
            ganarText.enabled = true;
     }
 
     public void AmountShots(int shots)
     {
         shotsText.text = shots.ToString();
-        Debug.Log("HAHAHAHA "+ shots);
     }
 
     public void RemoveSpray(int spray)
