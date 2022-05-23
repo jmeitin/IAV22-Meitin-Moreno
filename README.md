@@ -6,6 +6,13 @@ Scared Bird es un juego shooter en primera persona para PC donde el jugador toma
 
 * **Video demostración:** https://www.youtube.com/watch?v=rZg6bURmuxk&ab_channel=JAVIERMEIT%C3%8DNMORENO
 
+## Controles:
+### Jugador:
+* **Movimiento:** El jugador podrá controlar el movimiento del jugador mediante las teclas **WASD** para moverse sobre el escenario.
+* **Mirar:** El jugador puede cambiar la dirección en la que mira la cámara moviendo el **ratón**.
+* **Disparar:** El jugador puede disparar con la tecla **SPACE**.
+* **Spray:** El jugador puede instanciar un spray para atreaer al pájaro jefe con la tecla **C**. (Solo en caso de que aún le queden)
+
 ## Entidades:
 ### Cazador:
 El cazador es controlado por el jugador, el cual puede realizar unicamente 2 acciones:
@@ -26,7 +33,7 @@ El juego tiene asociado un package de Input System (Version 1.0.2 - January 21, 
 
 El principal uso que se le da a este paquete en este proyecto es la de utilizar un **InputActions** llamado **PlayerInput** para gestionar las acciones que puede realizar el jugador, y a que teclas/ratón están asociados. 
 
-![image](https://user-images.githubusercontent.com/62613312/169347298-9be01c20-f214-4834-bff8-e29d48b6e83d.png)
+![image](https://user-images.githubusercontent.com/62613312/169841977-c6494bde-5687-45bb-acb3-1a0c0a570c57.png)
 
 Una vez definidas las asociaciones entre input y acciones se genera un Script C# también llamado **PlayerInput** que puede ser consultado por otros Scripts con el fin de determinar que tecla se ha pulsado en ese frame.
 
@@ -231,12 +238,6 @@ function SpraysAvailable():
 Se encarga de mostrar en pantalla el número de pájaros abatidos y los disparos usados.
 
 ![image](https://user-images.githubusercontent.com/62613312/169840937-948d2c8e-9b31-4438-b286-98293835dfe2.png)
-
-## Controles:
-### Jugador:
-* **Movimiento:** El jugador podrá controlar el movimiento del jugador mediante las flechas/teclas WASD para moverse sobre el escenario.
-* **Mirar:** El jugador puede cambiar la dirección en la que mira la cámara moviendo el ratón.
-* **Disparar:** El jugador puede disparar con la tecla espaciadora.
 
 ## Assets:
 Todos los assets usados son gratuitos. O bien los he creado yo, o los he cogido de internet:
