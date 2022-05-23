@@ -2,7 +2,7 @@
 *Javier Meitín Moreno*
 
 ## Descripción:
-Scared Bird es un juego shooter en primera persona para PC donde el jugador toma el rol de un Cazador que debe acabar con todos los pájaros en el bosque. Estos pájaros vuelan en bandada siguiendo al Pájaro Jefe. Cuando oyen un disparo, los pájaros menores huyen del lugar, hasta haberse tranquilizado al cabo de unos segundos. Al pasar cierto intervalo de tiempo vuelven a seguir al pájaro jefe como hacían antes. En caso de que el cazador mate al Pájaro jefe, la bandada se desintegrará y todos los pájaros pasarán a volar de manera aleatoria. El juego acabará cuando el Cazador haya acabado con todos los pájaros.
+Scared Bird es un juego shooter en primera persona para PC donde el jugador toma el rol de un Cazador que debe acabar con todos los pájaros en el bosque. Estos pájaros vuelan en bandada siguiendo al Pájaro Jefe. Cuando oyen un disparo, los pájaros menores huyen del lugar, hasta haberse tranquilizado al cabo de unos segundos. Al pasar cierto intervalo de tiempo vuelven a seguir al pájaro jefe como hacían antes. En caso de que el cazador mate al Pájaro jefe, la bandada se desintegrará y todos los pájaros pasarán a volar de manera aleatoria. El juego acabará cuando el Cazador haya acabado con todos los pájaros. Dado que el merodeo de el pájaro es imprevisible, el jugador podrá atraerlo con un spray verde que puede instanciar un máximo de 3 veces. En cuanto el pájaro lo vea se acercará a investigar.
 
 * **Video demostración:** https://www.youtube.com/watch?v=rZg6bURmuxk&ab_channel=JAVIERMEIT%C3%8DNMORENO
 
@@ -74,13 +74,20 @@ function Shoot():
 ```
 
 #### Input Manager:
-Se encarga de generar una instancia del **PlayerInput** para poder enviarle al PlayerMotor y PlayerLook los valores del teclado y ratón en los Update. 
+Se encarga de generar una instancia del **PlayerInput** para poder enviarle al PlayerMotor y PlayerLook los valores del teclado y ratón en los Update. También detecta la pulsación de la tecla C para instanciar un nuevo spray.
+
 ```js
 speed: value, with default value of 5
 
 function Update():
+   # DISPARAR
    if andando.Disparar.triggered then
       playerShooter.ProcessShoot(disparar)
+      
+   # LANZAR SPRAY ==> AVISAR AL GM
+   if andando.Atraer.triggered then
+         if GameManager.SpraysAvailable then
+                GameManager.traerPajaro(player.position)
    
 function FixedUpdate():
     playerMotor.ProcessMove(andando.Movimiento)
@@ -88,6 +95,7 @@ function FixedUpdate():
 function LateUpdate()
     playerLook.ProcessLook(andanado.Mirar)
 ```
+![image](https://user-images.githubusercontent.com/62613312/169839087-7ee2a12f-5505-4275-bc17-7a2901843b1f.png)
 
 #### Diagrama:
 ![Untitled Diagram drawio (1)](https://user-images.githubusercontent.com/62613312/167623958-ac518a80-2c44-4ccd-a47f-d1d91e2fbabb.png)
@@ -134,6 +142,7 @@ navMeshAgent: NavMeshAgent
 
 function Update():
     navMeshAgent.destination = target.position
+    # Tambien cambia aleatoriamente la posicion del target cada cierto INTERVALO de tiempo
     
 function OnTriggerEnter(Collider other):
         # El pajaro alcanzo su objetivo
@@ -154,6 +163,12 @@ function SinMiedo:
    else then
       PajaroSeguir.enable
       this.disable
+      
+# EL PAJARO TIENE QUE IR HACIA EL SPRAY VERDE
+function PlayerCall(Vector3 pos):
+    # EL SPRAY SE PONE EN LA ULTIMA POS DE PLAYER
+    target.position = pos
+    Instantiate spray
 ```
 
 ### Pájaro Menor:
@@ -174,7 +189,8 @@ Se encarga de gestionar la puntuación, la escena, y el número de pájaros.
 deadBirds : value, default value 0;
 aliveBirds : value, default value Number of birds in the scene;
 score : value, default value 0;
-shots : value, default value 0;;
+shots : value, default value 0;
+sprays : value, default value 3;
 
 function BirdDied(int destructionPoints, Vector3 posDeadBird, bool eraJefe):
     # MODIFICAR UI
@@ -193,6 +209,19 @@ function BirdDied(int destructionPoints, Vector3 posDeadBird, bool eraJefe):
          DeActivate PajaroSeguir
          Activate BirdNavMesh
          BirdNavMesh.Huir(posDeadBird, eraJefe)
+         
+function AtraerPajaro(Vector3 posPlayer):
+    # 0 es el jefe
+    if pajaros[0].active then
+      pajaros[0].BirdNavMesh.PlayerCall(posPlayer)
+
+function SpraysAvailable():
+    if spray > 0 && jefeIsAlive then
+      spray--
+      uiManager update
+      return true
+        
+    return false;
 ```
 
 #### Ciclo de llamadas al disparar a un pájaro
@@ -201,7 +230,7 @@ function BirdDied(int destructionPoints, Vector3 posDeadBird, bool eraJefe):
 ### UIManager:
 Se encarga de mostrar en pantalla el número de pájaros abatidos y los disparos usados.
 
-![image](https://user-images.githubusercontent.com/62613312/168070359-efb42d1a-a4f7-487b-a4b9-90b47d9130a1.png)
+![image](https://user-images.githubusercontent.com/62613312/169840937-948d2c8e-9b31-4438-b286-98293835dfe2.png)
 
 ## Controles:
 ### Jugador:
